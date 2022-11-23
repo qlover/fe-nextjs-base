@@ -1,0 +1,34 @@
+.Arrange {
+  --space: 1.6rem;
+  --column: 2;
+  --cell-width: calc(100% / var(--column) - var(--space-x, var(--space)));
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: calc(0px - var(--space-x, var(--space)));
+  margin-top: calc(0px - var(--space-y, var(--space)));
+
+  > [data-component='ArrangeCell'] {
+    width: var(--cell-width);
+    margin-left: var(--space-x, var(--space));
+    margin-top: var(--space-y, var(--space));
+  }
+}
+.single {
+  --column: 1;
+}
+
+@media (min-width: theme('screens.sm')) {
+}
+@media (min-width: theme('screens.md')) {
+  .single {
+    --column: 2;
+  }
+}
+@media (min-width: theme('screens.lg')) {
+}
+@media (min-width: theme('screens.xl')) {
+}
+@media (min-width: theme('screens.2xl')) {
+}

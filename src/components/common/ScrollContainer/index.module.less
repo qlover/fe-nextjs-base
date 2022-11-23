@@ -1,0 +1,18 @@
+.container {
+  --track-y-bg: #eaecf5;
+  --track-y-bar-bg: #1765d8;
+  :global {
+    .simplebar-track {
+      max-width: 0.7rem;
+      background-color: var(--track-y-bg);
+    }
+    .simplebar-scrollbar {
+      min-height: 42px;
+      @apply cursor-pointer;
+      &:before {
+        background-color: var(--track-y-bar-bg);
+        @apply left-0 right-0 rounded-none opacity-100;
+      }
+    }
+  }
+}

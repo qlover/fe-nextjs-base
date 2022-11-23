@@ -1,0 +1,19 @@
+/*
+  100 - Thin
+  200 - Extra Light (Ultra Light)
+  300 - Light
+  400 - Regular (Normal、Book、Roman)
+  500 - Medium
+  600 - Semi Bold (Demi Bold)
+  700 - Bold
+  800 - Extra Bold (Ultra Bold)
+  900 - Black (Heavy)
+*/
+@font-face {
+  font-family: 'Lexend Deca';
+  src: url(/assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url(/assets/fonts/Lexend/Lexend-VariableFont_wght.ttf);
+}

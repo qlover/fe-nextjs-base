@@ -1,0 +1,98 @@
+.layout-horizontal {
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  [data-component='StringWithHTML'] {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  :global {
+    .figure-cover {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .figure-content {
+      p + p {
+        margin-top: 1rem;
+      }
+    }
+    .figure-content-head {
+      font-size: 2.2rem;
+      line-height: 3rem;
+      padding-bottom: 2.4rem;
+      font-weight: 600;
+    }
+
+    .figure-head {
+      width: 100%;
+    }
+  }
+
+  &.topCover {
+    :global {
+      // 小屏幕封面默认排第一个
+      .figure-cover {
+        order: -1;
+      }
+    }
+  }
+}
+
+@media (min-width: theme('screens.md')) {
+  .layout-horizontal {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+
+    :global {
+      .figure-content {
+        p + p {
+          margin-top: 2rem;
+        }
+      }
+      .figure-content-head {
+        font-size: 3.4rem;
+        line-height: 4.3rem;
+        padding-bottom: 2.8rem;
+      }
+    }
+
+    &.topCover {
+      :global {
+        // 小屏幕封面默认排第一个
+        .figure-cover {
+          order: initial;
+        }
+      }
+    }
+  }
+}
+.layout-vertical {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: center;
+  // 因为是垂直布局，直接 col
+  flex-direction: column;
+  --column: 1;
+  --space-x: 0;
+  --cell-width: 100%;
+
+  :global {
+    .figure-cover {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  &.topCover {
+    :global {
+      // 小屏幕封面默认排第一个
+      .figure-cover {
+        order: -1;
+      }
+    }
+  }
+}

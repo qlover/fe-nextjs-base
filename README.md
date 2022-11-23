@@ -1,2 +1,1 @@
-# template-with-nextjs
-nextjs template
+# lss-games

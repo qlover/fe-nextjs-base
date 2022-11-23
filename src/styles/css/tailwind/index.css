@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 10px;
+  }
+  body {
+    font-size: 1.6rem;
+  }
+}
+@layer utilities {
+  .max-w-1327 {
+    max-width: 1327px;
+    @apply mx-auto;
+  }
+  .max-w-1440 {
+    max-width: 1440px;
+    @apply mx-auto;
+  }
+  .max-w-1200 {
+    max-width: 1200px;
+    @apply mx-auto;
+  }
+  .max-w-1000 {
+    max-width: 1000px;
+    @apply mx-auto;
+  }
+}
