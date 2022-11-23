@@ -1,7 +1,17 @@
 import { ConfigProvider } from 'antd';
 import { NextPage } from 'next';
+import useContainer from './container';
 
-function copyNextPageAttr<P>(targetCom: NextPage<P>, sourceCom: NextPage<P>) {
+export type BaesPageRootProps = LocalApp.PageProps;
+
+export type PageRootComponentProps<P> = P & BaesPageRootProps;
+
+export type PageRootComponent<P = {}> = NextPage<PageRootComponentProps<P>>;
+
+function copyNextPageAttr<P>(
+  targetCom: PageRootComponent<P>,
+  sourceCom: PageRootComponent<P>
+) {
   targetCom.propTypes = sourceCom.propTypes;
   targetCom.contextTypes = sourceCom.contextTypes;
   targetCom.defaultProps = sourceCom.defaultProps;
@@ -25,10 +35,10 @@ function copyNextPageAttr<P>(targetCom: NextPage<P>, sourceCom: NextPage<P>) {
  * @param Component
  * @returns
  */
-export default function PageRoot<P extends PlainObject = LocalApp.PageProps>(
-  Component: NextPage<P>
+export default function PageRoot<P extends PlainObject>(
+  Component: PageRootComponent<P>
 ) {
-  const Page: NextPage<P> = (props) => {
+  const Page: PageRootComponent<P> = (props) => {
     return (
       <ConfigProvider>
         <Component {...props} />
@@ -41,3 +51,5 @@ export default function PageRoot<P extends PlainObject = LocalApp.PageProps>(
 
   return Page;
 }
+
+PageRoot.useContainer = useContainer;
