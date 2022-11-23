@@ -2,7 +2,10 @@ import PageRoot from '@/container/PageRoot';
 import BasicLayout from '@/layout/BasicLayout';
 import RenderDispatch from '@/utils/next-utils/RenderDispatch';
 const IndexPage = PageRoot(() => {
-  const { t } = PageRoot.useContainer();
+  const { t, renderValue } = PageRoot.useContainer();
+  const { section1, section2 } = renderValue;
+  console.log(section1, section2);
+
   return (
     <BasicLayout
       seoProps={{
@@ -11,7 +14,10 @@ const IndexPage = PageRoot(() => {
         description: t('seo_desc'),
       }}
     >
-      <h1>index page</h1>
+      <section className="w-80">
+        <h1>{t('banner_title')}</h1>
+        <h2>{t('banner_subtitle')}</h2>
+      </section>
     </BasicLayout>
   );
 });

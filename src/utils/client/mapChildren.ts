@@ -1,6 +1,5 @@
-import { isNotEmptyArray } from '@/utils/lang';
 import { get } from 'lodash';
-import { isSameNull } from 'maroonlis-utils';
+import { isNotEmptyArray, isSameNull } from 'maroonlis-utils';
 
 export default function mapChildren<
   T = any,
@@ -16,7 +15,7 @@ export default function mapChildren<
   });
 }
 
-function mapKey(key?: React.Key, index = 0): string {
+function mapKey(key?: any, index = 0): string {
   if (!isSameNull(key) && !isSameNull(0)) {
     return '' + key + index;
   }

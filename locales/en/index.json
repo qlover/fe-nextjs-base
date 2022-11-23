@@ -2,5 +2,55 @@
   "seo_title": "Play Best Online Games at ihigames.com - Free Online Games!",
   "seo_desc": "Play Free Online Games at ihigames.com - Best Online Games!",
   "seo_keywords": "ihigames,online games,games online,online phone games,online games",
-  "title": "Play Best Online Games at ihigames.com - Free Online Games!"
+  "title": "Play Best Online Games at ihigames.com - Free Online Games!",
+
+  "banner_title": "Play. Learn. Earn.",
+  "banner_subtitle": "World's leading mobile publisher",
+
+  "let_go_btn": "let’s chat!",
+  "our_game_title": "Check out our games!",
+
+  "rv_section1": {
+    "title": "We partner with global content owners to unlock an untapped market",
+    "children": [
+      {
+        "id": 1,
+        "title": "Hyper Local Operations",
+        "desc": "Localized distribution and marketing capabilities",
+        "href": "",
+        "imgProps": {
+          "src": "/assets/index/section1-1.png",
+          "alt": "",
+          "title": ""
+        }
+      },
+      {
+        "id": 2,
+        "title": "Seamless Payments",
+        "desc": "Embedded fintech platform for enhanced monetization",
+        "href": "",
+        "imgProps": {
+          "src": "/assets/index/section1-21.png",
+          "alt": "",
+          "title": ""
+        }
+      },
+      {
+        "id": 3,
+        "title": "Social Gaming Expertise",
+        "desc": "World class design, product management, and live ops",
+        "href": "",
+        "imgProps": {
+          "src": "/assets/index/section1-3.png",
+          "alt": "",
+          "title": ""
+        }
+      }
+    ]
+  },
+
+  "rv_section2": {
+    "title": "Publish with Advance Games",
+    "subTitle": "We are the go-to partner for game developers. Partner with us to leverage our unique user acquisition and monetization capabilities in the final growth market."
+  }
 }

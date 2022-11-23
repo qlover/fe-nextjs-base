@@ -19,7 +19,16 @@ const config = {
   // assetPrefix: 'https://cdn.sonicsvpn.com',
   env: {},
 
-  // experimental: { images: { allowFutureImage: true } },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
 };

@@ -11,6 +11,8 @@
     "analyze:browser": "set BUNDLE_ANALYZE=browser && next build"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "antd": "^4.23.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
