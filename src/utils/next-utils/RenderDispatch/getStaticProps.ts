@@ -1,7 +1,30 @@
 import appConfig from '@/config/appConfig';
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next/types';
-import RenderDispatch, { BaseConfigType, ErrorHandler } from '.';
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next/types';
+import RenderDispatch, { BaseConfigType } from '.';
+import { RedirectError, ServerError } from '../AppServerError';
 import { prepareForSerializatoin } from '../prepareForSerializatoin';
+
+type StaticConfigType<P> = BaseConfigType<HandlerType<P>> & {
+  /**
+   * 预渲染后超时时间，
+   *
+   * 重新渲染时间，单位秒
+   *
+   * 可以被 handler 返回的 `revalidate` 覆盖
+   *
+   * 默认 10 分钟， 10*60
+   */
+  revalidate?: number | boolean;
+};
+
+/**
+ * 10 分钟
+ */
+const DEFAULT_REVALIDATE = 600;
 
 type HandlerType<Props> = (
   context: GetStaticPropsContext
@@ -16,26 +39,28 @@ function isNextResult<P>(val: any): val is GetStaticPropsResult<P> {
   return val.props || val.redirect || val.notFound !== void 0;
 }
 
-async function wrapperHandler<P extends PlainObject>(
-  context: GetStaticPropsContext,
-  config: BaseConfigType<HandlerType<P>>
-) {
-  const {
-    jsonTransform = appConfig.appEnv !== 'master',
-    // routerFilter = appConfig.appEnv !== 'local',
-  } = config;
+async function wrapperHandler<
+  P extends { [key: string]: any } = { [key: string]: any }
+>(context: GetStaticPropsContext, config: StaticConfigType<P>) {
+  const { jsonTransform = appConfig.appEnv !== 'master' } = config;
 
-  let result = { props: { empty: true } as P | PlainObject };
+  let result = {
+    props: { empty: '1' } as unknown as P,
+  } as GetStaticPropsResult<P>;
 
-  // TODO: router filter
-  // routerFilter && plugRouterFilter(resolvedUrl, locale);
+  if (config.revalidate) {
+    result.revalidate = config.revalidate;
+  } else if (config.revalidate !== false) {
+    result.revalidate = DEFAULT_REVALIDATE;
+  }
 
   if (config?.handler) {
     const props = await config.handler(context);
     if (props && isNextResult<P>(props)) {
-      return jsonTransform ? prepareForSerializatoin(props) : props;
+      result = { ...result, ...props };
     }
 
+    // @ts-expect-error
     result.props = { ...result.props, ...props };
   }
 
@@ -52,18 +77,16 @@ async function wrapperHandler<P extends PlainObject>(
  * `handler`
  *    - 可以随意返回一个对象，会当作 props
  *    - 可以按规则返回会被 next 直接使用
- *    - 还可以什么都不返回，为了开发方便, 默认 返回 `props:{ empty:true }`
+ *    - 还可以什么都不返回，为了开发方便, 默认 返回 `props:{ empty:'1' }`
  *    - 可手动抛出 `AppServerError` 由 `ErrorHandler` 处理
  *
  * @param config
  * @returns
  */
-export default function getStaticProps<P extends PlainObject>(
-  config: BaseConfigType<HandlerType<P>> = {}
-) {
-  const { catchError = appConfig.appEnv !== 'local' } = config;
-
-  return async function getStaticProps(context: GetStaticPropsContext) {
+export default function getStaticProps<
+  P extends { [key: string]: any } = { [key: string]: any }
+>(config: StaticConfigType<P> = {}) {
+  const getStaticProps: GetStaticProps<P> = async (context) => {
     try {
       const { locale } = context;
 
@@ -76,13 +99,32 @@ export default function getStaticProps<P extends PlainObject>(
         },
       };
 
-      return await wrapperHandler<P>(context, config);
+      const result = await wrapperHandler<P>(context, config);
+
+      return result;
     } catch (e) {
-      if (catchError) {
-        return ErrorHandler(e as Error);
+      console.log('[RenderDispatch getStaticProps error]', e);
+      // if (config.catchError || appConfig.appEnv !== 'local') {
+      //   // return ErrorHandler(e as Error);
+      //   // return new NotFoundError();
+      // }
+
+      if (e instanceof ServerError) {
+        return e.redirect();
       }
+
+      if (e instanceof RedirectError) {
+        return e.redirect();
+      }
+
+      return {
+        props: {} as P,
+        revalidate: config.revalidate,
+      };
     } finally {
       RenderDispatch.clearState();
     }
   };
+
+  return getStaticProps;
 }

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import appConfig from '@/config/appConfig';
+import { serverLog } from '@/utils/logger';
 import { IncomingMessage } from 'http';
 import AppServerError, { RedirectError, ServerError } from '../AppServerError';
 import getServerSideProps from './getServerSideProps';
@@ -49,21 +50,18 @@ export function plugRemoveLang(asPath: string) {
 
 export function plugRouterFilter(resolvedUrl: string, locale?: string) {
   // TODO: router filter
-  if (resolvedUrl.startsWith('/blog')) {
-    if (locale === 'zh' || locale === 'ru') {
+  if (locale === 'zh') {
+    if (resolvedUrl.startsWith('/blog')) {
       throw new RedirectError({
-        redirect: { statusCode: 301, destination: '/blog' },
+        redirect: { statusCode: 302, destination: '/blog' },
+      });
+    }
+    if (resolvedUrl.startsWith('/support')) {
+      throw new RedirectError({
+        redirect: { statusCode: 302, destination: '/support' },
       });
     }
   }
-
-  // if (resolvedUrl.startsWith('/support')) {
-  //   if (locale === 'zh') {
-  //     throw new RedirectError({
-  //       redirect: { statusCode: 302, destination: '/support' },
-  //     });
-  //   }
-  // }
 }
 
 /**
@@ -72,6 +70,7 @@ export function plugRouterFilter(resolvedUrl: string, locale?: string) {
  * @returns
  */
 export function ErrorHandler(e: Error) {
+  serverLog('[RenderDispatch ErrorHandler]', e);
   // redirect
   if (e instanceof AppServerError && e.redirect) {
     return e.redirect();

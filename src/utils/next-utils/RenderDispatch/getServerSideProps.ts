@@ -30,7 +30,10 @@ async function wrapperHandler<P extends PlainObject>(
 ) {
   const { resolvedUrl, locale } = context;
 
-  const { jsonTransform = true, routerFilter = true } = config;
+  const {
+    jsonTransform = appConfig.appEnv !== 'master',
+    routerFilter = appConfig.appEnv !== 'local',
+  } = config;
 
   let result = { props: { empty: true } as P | PlainObject };
 
