@@ -1,4 +1,4 @@
-import { isSameNull } from './lang';
+import { isSameNull } from 'maroonlis-utils';
 
 /**
  * 用来生成 map index 遍历的 key, 主要规避 unique key 警告

@@ -1,6 +1,6 @@
 import appConfig from '@/config/appConfig';
 import { parse, stringify } from 'qs';
-import { localLoginInfo, localUserInfo } from './createStore';
+
 export function getWebDomain() {
   return (
     document.location.protocol +
@@ -50,13 +50,6 @@ export function parseURLSearchParams(url: string) {
     return parse(url.split('?')[1]);
   }
   return {};
-}
-
-export function redirectLogin(local?: string) {
-  localLoginInfo().remove();
-  localUserInfo().remove();
-  // const url = local ? local + '/login' : '/login';
-  // window.location.replace(local ? local + '/login' : '/login');
 }
 
 /**
