@@ -46,7 +46,7 @@ let appConfig = {
   /**
    * 默认语言
    */
-  lang: i18n.defaultLocale,
+  lang: i18n.defaultLocale as LocalApp.Lang,
 
   timeFormat: { blogUpdateTime: 'y/m/d' },
   tokenHeaderKey: 'Authorization',

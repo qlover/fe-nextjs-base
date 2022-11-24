@@ -1,7 +1,6 @@
 import appConfig from '@/config/appConfig';
 import { isServer } from '@/config/nextEnv';
 import RenderDispatch from '../next-utils/RenderDispatch';
-import { localAppLang } from './createStore';
 
 /**
  * 将本地语言转换成 cms 请求头识别语言
@@ -23,9 +22,7 @@ export function toLocale(local: LocalApp.Lang) {
  */
 export function injectAcceptLanguage(local?: LocalApp.Lang) {
   const lang =
-    local || isServer()
-      ? RenderDispatch.state.client?.locale || appConfig.lang
-      : localAppLang().get();
+    local || isServer() ? RenderDispatch.state.client?.locale : appConfig.lang;
 
-  return { 'Accept-Language': toLocale(lang || appConfig.lang) };
+  return { 'Accept-Language': toLocale(lang) };
 }

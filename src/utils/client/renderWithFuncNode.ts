@@ -1,5 +1,5 @@
 import { isFunction } from 'lodash';
-import { isSameNull } from '../lang';
+import { isSameNull } from 'maroonlis-utils';
 
 export default function renderWithFuncNode<P = any>(
   node?: BaseComponent.WithFuncNode<P>,

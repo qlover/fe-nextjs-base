@@ -1,7 +1,6 @@
 import appConfig from '@/config/appConfig';
 import { isBrower } from '@/config/nextEnv';
 import { localLoginInfo } from '@/utils/client/createStore';
-import { redirectLogin } from '@/utils/client/host';
 import { message } from 'antd';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { has } from 'lodash';
@@ -77,7 +76,6 @@ whitAxios.useInstaner((cfg) => {
       if (code === 1000) {
         if (isBrower()) {
           message.error(data.msg);
-          redirectLogin();
         }
         return Promise.reject(res);
       }

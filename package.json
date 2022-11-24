@@ -42,6 +42,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
+    "@types/ua-parser-js": "^0.7.36",
     "autoprefixer": "^10.4.7",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "8.21.0",
