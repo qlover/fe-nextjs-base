@@ -1,5 +1,5 @@
 import PageRoot from '@/container/PageRoot';
-import BasicLayout from '@/layout/BasicLayout';
+import BaseLayout from '@/layout/BaseLayout';
 import RenderDispatch from '@/utils/next-utils/RenderDispatch';
 const IndexPage = PageRoot(() => {
   const { t, renderValue } = PageRoot.useContainer();
@@ -7,7 +7,7 @@ const IndexPage = PageRoot(() => {
   console.log(section1, section2);
 
   return (
-    <BasicLayout
+    <BaseLayout
       seoProps={{
         keywords: t('seo_keywords'),
         title: t('seo_title'),
@@ -18,7 +18,7 @@ const IndexPage = PageRoot(() => {
         <h1>{t('banner_title')}</h1>
         <h2>{t('banner_subtitle')}</h2>
       </section>
-    </BasicLayout>
+    </BaseLayout>
   );
 });
 
