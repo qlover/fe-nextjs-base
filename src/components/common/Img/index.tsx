@@ -29,7 +29,6 @@ export type ImgProps = ImageProps & {
  * @returns
  */
 function Img({
-  className,
   transformImageUri,
   src,
   loading = 'lazy',

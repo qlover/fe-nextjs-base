@@ -11,6 +11,22 @@ const plugin = require('tailwindcss/plugin');
  *
  */
 const ovrriedWithRoot10PX = {
+  lineHeight: {
+    3: '1.2rem',
+    4: '1.6rem',
+    5: '2.0rem',
+    6: '2.4rem',
+    7: '2.8rem',
+    8: '3.2rem',
+    9: '3.6rem',
+    10: '4.0rem',
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
+  },
   maxWidth: {
     xs: '32.0rem',
     sm: '38.4rem',
