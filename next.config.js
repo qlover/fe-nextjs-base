@@ -19,6 +19,16 @@ const config = {
   // assetPrefix: 'https://cdn.sonicsvpn.com',
   env: {},
 
+  webpack(config) {
+    // 增加 svg 加载
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
+
   images: {
     remotePatterns: [
       {

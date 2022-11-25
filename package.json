@@ -19,6 +19,7 @@
     "lodash": "^4.17.21",
     "maroonlis-utils": "0.0.30",
     "next": "latest",
+    "@svgr/webpack": "^6.5.1",
     "next-seo": "^5.5.0",
     "next-translate": "^1.5.0",
     "popmotion": "^11.0.5",
