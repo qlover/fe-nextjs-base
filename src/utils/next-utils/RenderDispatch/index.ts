@@ -116,7 +116,7 @@ export type DispatchState = {
  *
  * server 时是不能和 client 直接通信，只能层层传递, 比如在 service 请求层，想要获取用户语言环境 client 很简单直接本地获取，但是 server端 需要从 server 的请求头中获取，这类数据可间接由 `RenderDisptch.state` 保存提供通用的客户端数据
  *
- * 最好每一次 server 渲染周期后将 `RenderDisptch.state` 销毁，防止和 client 混淆
+ * 最好每一次 server 渲染周期后将 `RenderDisptch.state` 销毁，防止和 client 混淆和泄露
  */
 export default function RenderDispatch() {}
 

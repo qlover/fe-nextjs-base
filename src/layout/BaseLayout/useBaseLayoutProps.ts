@@ -3,7 +3,7 @@ import useTranslationRouter from '@/hooks/useTranslationRouter';
 import { BaseLayoutProps } from '.';
 
 export default function useBasicLayoutProps(props: BaseLayoutProps) {
-  const { t, i18Ns } = useTranslationRouter();
+  const { t, i18Ns } = useTranslationRouter(props.defaultNS);
 
   const seoProps = {
     title: t('seo_title', null, { default: '' }),

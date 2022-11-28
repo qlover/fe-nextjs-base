@@ -2,9 +2,8 @@
 import Seo, { SeoProps } from '@/components/common/Seo';
 import PageFooter, { PageFooterProps } from '@/components/pages/PageFooter';
 import PageHeader, { PageHeaderProps } from '@/components/pages/PageHeader';
-import useTranslationRouter from '@/hooks/useTranslationRouter';
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import css from './index.module.less';
 import useBaseLayoutProps from './useBaseLayoutProps';
 
@@ -33,21 +32,23 @@ export type BaseLayoutProps = {
    */
   headerProps?: false | PageHeaderProps;
 
-  hideIpInfoBar?: boolean;
+  defaultNS?: LocalApp.Locales;
 };
 
 export type BasicLayoutRenderProps = PropsWithChildren<BaseLayoutProps>;
 
-const BasicLayout: FC<BasicLayoutRenderProps> = ({ children, ...props }) => {
-  const {
-    hideIpInfoBar,
-    footerProps,
-    mainClassName,
-    headerProps,
-    seoProps,
-    className,
-  } = useBaseLayoutProps(props);
-  const { lang } = useTranslationRouter();
+/**
+ * 基础布局组件
+ *
+ * 1. 包含默认路由级别对应的 locale seo 基本信息, (前提是 i18n 文件用路由名命名),如果没有可用 `defaultNS` 指定, seo 使用 next/seo 组件
+ * 2. 包含基础头部,底部组件
+ *
+ * @param param0
+ * @returns
+ */
+function BasicLayout({ children, ...props }: BasicLayoutRenderProps) {
+  const { footerProps, mainClassName, headerProps, seoProps, className } =
+    useBaseLayoutProps(props);
 
   return (
     <div className={classNames(css['BasicLayout-wrapper'], className)}>
@@ -60,6 +61,6 @@ const BasicLayout: FC<BasicLayoutRenderProps> = ({ children, ...props }) => {
       {footerProps === false ? null : <PageFooter {...footerProps} />}
     </div>
   );
-};
+}
 
 export default BasicLayout;

@@ -1,21 +1,19 @@
 import PageRoot from '@/container/PageRoot';
 import BaseLayout from '@/layout/BaseLayout';
 import RenderDispatch from '@/utils/next-utils/RenderDispatch';
+import { WindowIcon } from '@heroicons/react/24/outline';
 const IndexPage = PageRoot(() => {
   const { t, renderValue } = PageRoot.useContainer();
   const { section1, section2 } = renderValue;
   console.log(section1, section2);
 
   return (
-    <BaseLayout
-      seoProps={{
-        keywords: t('seo_keywords'),
-        title: t('seo_title'),
-        description: t('seo_desc'),
-      }}
-    >
+    <BaseLayout>
       <section className="w-80 min-h-[40rem]">
-        <h1>{t('banner_title')}</h1>
+        <h1 className="text-2xl">
+          <WindowIcon />
+          {t('banner_title')}
+        </h1>
         <h2>{t('banner_subtitle')}</h2>
       </section>
     </BaseLayout>
