@@ -2,8 +2,17 @@ import domData from '@/utils/client/domData';
 import mapChildren from '@/utils/client/mapChildren';
 import classNames from 'classnames';
 import { isEmptyPropsValue } from 'maroonlis-utils';
-import { createElement } from 'react';
+import { createElement, CSSProperties } from 'react';
 import css from './index.module.less';
+
+type StyleType = {
+  '--space-x'?: string | number;
+  '--space-y'?: string | number;
+  '--space'?: string | number;
+  '--column'?: string | number;
+  '--cell-width'?: string | number;
+  '--dir'?: CSSProperties['flexDirection'];
+} & CSSProperties;
 
 type ArrangeProps<T> = BaseComponent.WithChildren<
   BaseComponent.ListComponet<T> &
@@ -12,6 +21,8 @@ type ArrangeProps<T> = BaseComponent.WithChildren<
        * 小尺寸占一列默认 false
        */
       miniSingle?: boolean;
+
+      style?: StyleType;
     }
 >;
 

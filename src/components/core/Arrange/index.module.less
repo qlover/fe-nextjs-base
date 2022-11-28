@@ -2,9 +2,10 @@
   --space: 1.6rem;
   --column: 2;
   --cell-width: calc(100% / var(--column) - var(--space-x, var(--space)));
+  --dir: row;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: var(--dir);
   flex-wrap: wrap;
   margin-left: calc(0px - var(--space-x, var(--space)));
   margin-top: calc(0px - var(--space-y, var(--space)));

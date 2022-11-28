@@ -7,6 +7,7 @@ const env = (val?: string, defaultV = '') => val || defaultV;
 
 let appConfig = {
   versoin: pkg.version,
+
   /**
    * 当前环境
    *
@@ -16,6 +17,7 @@ let appConfig = {
    * local
    */
   appEnv: env(process.env.NEXT_PUBLIC_APP_ENV) as LocalApp.AppEnv,
+
   /**
    * 站点域名
    */
@@ -25,23 +27,13 @@ let appConfig = {
    * api 接口地址
    */
   apiBaseHost: env(process.env.NEXT_PUBLIC_API_HOST),
+
   apiCMSHost: env(process.env.NEXT_PUBLIC_API_HOST),
 
   /**
    * `locales` 中的本地数据前缀
    */
   localesDataPrefix: 'rv_',
-
-  /**
-   * gtag 配置
-   */
-  gtag: {
-    // 衡量 ID
-    MeasurementID: 'G-6KRFZ0L7JM',
-    // 容器ID
-    GTMID: 'GTM-PJ7ZPFB',
-    downloadID: 'sv-download',
-  },
 
   /**
    * 默认语言
