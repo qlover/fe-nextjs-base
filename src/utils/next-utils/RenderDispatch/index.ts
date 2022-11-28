@@ -49,7 +49,6 @@ export function plugRemoveLang(asPath: string) {
 }
 
 export function plugRouterFilter(resolvedUrl: string, locale?: string) {
-  // TODO: router filter
   if (locale === 'zh') {
     if (resolvedUrl.startsWith('/blog')) {
       throw new RedirectError({

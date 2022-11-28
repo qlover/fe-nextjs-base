@@ -37,7 +37,6 @@ async function wrapperHandler<P extends PlainObject>(
 
   let result = { props: { empty: true } as P | PlainObject };
 
-  // TODO: router filter
   routerFilter && plugRouterFilter(resolvedUrl, locale);
 
   if (config?.handler) {

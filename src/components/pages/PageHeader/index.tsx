@@ -1,28 +1,20 @@
+import CenteredWithBottomBorder from '@/components/example/TailWindHead';
 import useCacheState from '@/hooks/useCacheState';
-import useTranslation from '@/hooks/useTranslation';
+import useDomRef from '@/hooks/useDomRef';
 import classNames from 'classnames';
-import { useRef } from 'react';
 import css from './index.module.less';
 
 export type PageHeaderProps = {
   wrapperClassName?: string;
 };
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-];
 /**
- * TODO: fixed and stricy
  * @param param0
  * @returns
  */
 function PageHeader({ wrapperClassName }: PageHeaderProps) {
-  const { t: commonT } = useTranslation('common');
-  const headerRef = useRef<HTMLHeadElement>(null);
-  const [innserState, setInnerState] = useCacheState({
+  const [headerRef, setRef] = useDomRef<HTMLHeadElement>();
+  const [innerState, setInnerState] = useCacheState({
     openDrawer: false,
     drawerType: 'nav' as 'nav' | 'lang',
     currentNavKey: '',
@@ -31,12 +23,12 @@ function PageHeader({ wrapperClassName }: PageHeaderProps) {
 
   return (
     <header
-      ref={headerRef}
+      ref={setRef}
       className={classNames(css['page-haeder'], wrapperClassName, {
-        [css['scrolled']]: innserState.scrolled,
+        [css['scrolled']]: innerState.scrolled,
       })}
     >
-      page header
+      <CenteredWithBottomBorder />
     </header>
   );
 }

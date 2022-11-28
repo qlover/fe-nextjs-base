@@ -14,7 +14,7 @@ const IndexPage = PageRoot(() => {
         description: t('seo_desc'),
       }}
     >
-      <section className="w-80">
+      <section className="w-80 min-h-[40rem]">
         <h1>{t('banner_title')}</h1>
         <h2>{t('banner_subtitle')}</h2>
       </section>
@@ -22,10 +22,6 @@ const IndexPage = PageRoot(() => {
   );
 });
 
-export const getStaticProps = RenderDispatch.ssg({
-  async handler() {
-    return {};
-  },
-});
+export const getStaticProps = RenderDispatch.ssg();
 
 export default IndexPage;

@@ -20,7 +20,6 @@ type RVValueType = {};
  *
  * md 页面, 不会收到 pageProps,所以暂时不支持在 md 页面获取
  *
- * TODO: use rv data
  * @returns
  *
  */
@@ -28,7 +27,7 @@ export default function useRednerValueByRV_() {
   // const { pageProps } = useContainer(AppProps);
   const { getPageProps } = useAppProps();
 
-  const [innserState, setInnserState] = useCacheState(() => {
+  const [innerState, setinnerState] = useCacheState(() => {
     const source = getPageProps().__namespaces._rvdata;
     const rvvalue = createRenderValue<RVValueType>(source);
 
@@ -41,8 +40,8 @@ export default function useRednerValueByRV_() {
       getPageProps().__namespaces._rvdata
     );
 
-    setInnserState(rvvalue);
+    setinnerState(rvvalue);
   }, [getPageProps().__lang]);
 
-  return innserState;
+  return innerState;
 }

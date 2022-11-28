@@ -18,7 +18,6 @@ export type ImgProps = ImageProps & {
 };
 
 /**
- * TODO: 主要用来解决 next/Img 组件必须指定 html width 和 height 属性问题
  *
  * 其中 width,height 可理解为加载的图片尺寸大小，如果不指定图片样式尺寸，则会默认使用图片的加载尺寸
  *
