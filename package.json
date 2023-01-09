@@ -9,7 +9,9 @@
     "lint:init": "next lint",
     "prepare": "husky install",
     "git:commit:add": "git add . & cz",
-    "git:commit": "cz"
+    "git:commit": "cz",
+    "init:cz": "npx commitizen init cz-conventional-changelog --save-dev --save-exact",
+    "init:release": "npm init release-it"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -34,9 +36,17 @@
     "commitizen": "^4.2.6",
     "cz-conventional-changelog": "^3.3.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "postcss": "^8.4.21",
     "release-it": "^15.6.0",
     "tailwindcss": "^3.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
