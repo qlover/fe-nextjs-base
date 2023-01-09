@@ -6,12 +6,13 @@
     "start": "next dev -p 3198",
     "build": "next build",
     "next:start": "next start -p 3199",
-    "lint:init": "next lint",
+    "lint": "next lint",
     "prepare": "husky install",
     "git:commit:add": "git add . & cz",
     "git:commit": "cz",
     "init:cz": "npx commitizen init cz-conventional-changelog --save-dev --save-exact",
-    "init:release": "npm init release-it"
+    "init:release": "npm init release-it",
+    "release": "release-it"
   },
   "dependencies": {
     "@next/font": "13.1.1",
