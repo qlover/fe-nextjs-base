@@ -1,0 +1,7 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // 禁用 useEffect dep 监听警告
+    "react-hooks/exhaustive-deps": 0
+  }
+}

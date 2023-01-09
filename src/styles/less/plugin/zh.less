@@ -1,0 +1,39 @@
+/* lang for zh */
+html[lang='zh'] {
+  .content-desc {
+    line-height: 30px;
+  }
+
+  .content-desc .string-with-html.isHtml {
+    @apply space-y-2;
+  }
+
+  .banner-body.vpn-windows .banner-title {
+    @media (max-width: theme('screens.sm')) {
+      font-size: 2.5rem;
+      // font-size: 4.6rem;
+    }
+  }
+
+  .banner-body.vpn-windows .banner-subTitle,
+  .banner-body.vpn-ios .banner-subTitle,
+  .banner-body.vpn-android .banner-subTitle {
+    padding-top: 2rem;
+  }
+
+  .aboutUS-index-section {
+    .pageSection-subtitle {
+      @apply text-20;
+    }
+  }
+}
+
+@media (min-width: theme('screens.md')) {
+  html[lang='zh'] {
+    .xmas-slae-page {
+      .xmas-title {
+        font-size: 8rem;
+      }
+    }
+  }
+}

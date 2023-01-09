@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 为了重置 10px */
+@layer base {
+  html {
+    font-size: 10px;
+  }
+  body {
+    font-size: 1.6rem;
+  }
+}

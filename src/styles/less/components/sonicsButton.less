@@ -1,0 +1,74 @@
+.sonics-button-group {
+  @apply w-full inline-flex flex-col space-y-4 px-10;
+
+  > * {
+    @apply flex-1;
+  }
+  @media (min-width: theme('screens.md')) {
+    max-width: 570px;
+    @apply flex-row space-y-0 space-x-5 justify-center px-0;
+  }
+}
+
+.sonics-button {
+  min-height: 50px;
+  @apply text-center inline-flex items-center justify-center w-full md:w-auto rounded-full;
+
+  // type
+  &.type-plans {
+    @apply bg-FF6A83 hover:bg-FF4161  text-white;
+  }
+  &.type-ghost-white {
+    @apply border-2 border-solid border-white bg-transparent text-white transition-colors duration-300;
+
+    &:hover {
+      @apply border-transparent;
+      background: transparent linear-gradient(90deg, #8797ff 0%, #0e53f3 100%)
+        0% 0% no-repeat padding-box;
+    }
+  }
+
+  &.type-pricing-plans {
+    border-color: #ff607b;
+    color: #ff607b;
+    @apply text-18/45 border border-solid  bg-transparent transition-colors duration-300;
+    &:hover {
+      background: transparent linear-gradient(90deg, #6584ff 0%, #0054ff 100%)
+        0% 0% no-repeat padding-box;
+      @apply border-transparent text-white text-24/54;
+    }
+  }
+
+  &.type-windows,
+  &.type-border-blue {
+    @apply border border-solid border-294CD6 bg-transparent text-222222 transition-colors duration-300;
+
+    &:hover {
+      @apply border-transparent text-white;
+      background: transparent linear-gradient(90deg, #8797ff 0%, #0e53f3 100%)
+        0% 0% no-repeat padding-box;
+    }
+  }
+  &.type-apple-store,
+  &.type-google-play {
+    @apply bg-black text-white;
+    &:hover {
+      background: transparent linear-gradient(90deg, #8797ff 0%, #0e53f3 100%)
+        0% 0% no-repeat padding-box;
+    }
+  }
+
+  &.type-border-black {
+    @apply border border-solid border-222222 bg-transparent text-222222 transition-colors duration-300;
+
+    &:hover {
+      @apply border-transparent text-white;
+      background: transparent linear-gradient(90deg, #8797ff 0%, #0e53f3 100%)
+        0% 0% no-repeat padding-box;
+    }
+  }
+
+  @media (min-width: theme('screens.sm')) {
+    min-height: 60px;
+  }
+}

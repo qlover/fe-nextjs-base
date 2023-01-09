@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# lock
+package-lock.json
 
-.next/
+# custom
+pages/_local
 src/pages/_local/
