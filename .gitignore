@@ -41,3 +41,5 @@ package-lock.json
 # custom
 pages/_local
 src/pages/_local/
+
+.husky
