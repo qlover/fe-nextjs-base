@@ -9,6 +9,8 @@ const componentRoot = join(rootPath, 'src/components')
 
 const localeRootPath = join(rootPath, 'locales')
 
+const pageRootPath = join(srcRootPath, 'pages')
+
 module.exports = {
   /**
    * 项目根路径
@@ -45,5 +47,7 @@ module.exports = {
    */
   imgIconAssetsOutputPath: join(rootPath, 'src/components/core/Icon/ImgIcon'),
 
-  localeRootPath
+  localeRootPath,
+
+  pageRootPath
 }

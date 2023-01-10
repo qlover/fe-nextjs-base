@@ -1,5 +1,9 @@
 const { existsSync } = require('fs')
-const { typingsRootPath, localeRootPath } = require('../config/path.config')
+const {
+  typingsRootPath,
+  localeRootPath,
+  pageRootPath
+} = require('../config/path.config')
 const { mkdirsSync } = require('./files')
 
 function prePath(path) {
@@ -24,4 +28,16 @@ function preLocalesRootPath() {
   return prePath(localeRootPath)
 }
 
-module.exports = { prePath, preTypingsRootPath, preLocalesRootPath }
+/**
+ * 获取 pages 目录，如果不存在则创建
+ */
+function prePagesRootPath() {
+  return prePath(pageRootPath)
+}
+
+module.exports = {
+  prePath,
+  preTypingsRootPath,
+  preLocalesRootPath,
+  prePagesRootPath
+}
