@@ -1,0 +1,12 @@
+:root {
+  --primary: #ffffff;
+  --primary2: #f1f3f5;
+  --secondary: #000000;
+  --secondary2: #111;
+  --text-base: #000000;
+  --text-primary: #000000;
+  --text-secondary: white;
+  --hover: rgba(0, 0, 0, 0.075);
+  --hover2: rgba(0, 0, 0, 0.15);
+  --hover3: rgba(0, 0, 0, 0.25);
+}

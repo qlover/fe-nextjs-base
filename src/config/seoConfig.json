@@ -1,0 +1,8 @@
+{
+  "title": "Web Seo Title",
+  "description": "Web Seo Description",
+  "keywords": "Web Seo Keywords",
+  "localeSeoTitleKey": "seo_title",
+  "localeSeoDescKey": "seo_desc",
+  "localeSeoKeywordKey": "seo_keywords"
+}
