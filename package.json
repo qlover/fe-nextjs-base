@@ -10,6 +10,7 @@
     "prepare": "husky install",
     "git:commit:add": "git add . & cz",
     "git:commit": "cz",
+    "git:push": "git push",
     "init:cz": "npx commitizen init cz-conventional-changelog --save-dev --save-exact",
     "init:release": "npm init release-it",
     "release": "release-it",

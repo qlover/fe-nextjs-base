@@ -11,9 +11,11 @@ const whiteList = /(_app|_document|api)/
 
 const dynPage = /(\[.+\])/
 
-function typedFile(types) {
+function typedFile(types, stypes) {
   return `declare namespace PageRoute {
-  type Route = ${types}
+  type Path = ${types}
+
+  type PathStatic = ${stypes}
 }  
 `
 }
@@ -26,7 +28,7 @@ function getAllPages() {
 
   const subPages = result
     .filter((path) => {
-      if (pageReg.test(path) && !whiteList.test(path) && !dynPage.test(path)) {
+      if (pageReg.test(path) && !whiteList.test(path)) {
         return true
       }
 
@@ -46,10 +48,12 @@ function getAllPages() {
       return newPath
     })
 
-  console.log(subPages)
-
+  const staticPagePath = subPages.filter((path) => !dynPage.test(path))
   const filePath = join(preTypingsRootPath(), 'PageRoute.d.ts')
-  writeFileSync(filePath, typedFile(arrayToTypes(subPages)))
+  writeFileSync(
+    filePath,
+    typedFile(arrayToTypes(subPages), arrayToTypes(staticPagePath))
+  )
 
   console.log('[created success]', filePath)
 }

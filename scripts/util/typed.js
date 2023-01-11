@@ -7,6 +7,7 @@ function arrayToTypes(arr) {
     .map((item) => {
       return `'${item}'`
     })
+    .sort()
     .join(' | ')
 }
 

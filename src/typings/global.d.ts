@@ -7,7 +7,8 @@ type ValueOf<T> = T[keyof T]
 type SameString = string | number
 type PlainObject<V = any> = { [key: SameString]: V }
 
-declare interface Window extends LocalApp.AppScripts.Instance, Window {}
+// window 扩展
+declare interface Window extends Window {}
 
 declare namespace NodeJS {
   export interface ProcessEnv {
@@ -15,5 +16,6 @@ declare namespace NodeJS {
      * 本地环境
      */
     readonly NEXT_PUBLIC_APP_ENV?: LocalApp.AppEnv
+    readonly NEXT_PUBLIC_SITE_ORIGIN?: string
   }
 }
