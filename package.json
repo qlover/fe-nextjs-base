@@ -12,7 +12,7 @@
     "init:work": "node ./scripts/bin/_work.js",
     "lint": "next lint",
     "next:start": "next start -p 3199",
-    "release": "release-it",
+    "release": "node ./scripts/bin/release.js",
     "start": "next dev -p 3198",
     "postbuild": "next-sitemap"
   },
