@@ -3,17 +3,17 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "start": "next dev -p 3198",
-    "build": "next build",
-    "next:start": "next start -p 3199",
-    "lint": "next lint",
-    "init:work": "node ./scripts/_work.js",
-    "commit": "node ./scripts/commit.js",
-    "git:push": "git push",
-    "release": "release-it",
     "analyze": "set ANALYZE=true && next build",
+    "analyze:browser": "set BUNDLE_ANALYZE=browser && next build",
     "analyze:server": "set BUNDLE_ANALYZE=server && next build",
-    "analyze:browser": "set BUNDLE_ANALYZE=browser && next build"
+    "build": "next build",
+    "commit": "node ./scripts/bin/commit.js",
+    "git:push": "git push",
+    "init:work": "node ./scripts/bin/_work.js",
+    "lint": "next lint",
+    "next:start": "next start -p 3199",
+    "release": "release-it",
+    "start": "next dev -p 3198"
   },
   "dependencies": {
     "@next/font": "13.1.1",

@@ -1,8 +1,8 @@
 const { execSync } = require('child_process')
-const pkg = require('../package.json')
+const pkg = require('../../package.json')
 const husky = require('husky')
 const { join } = require('path')
-const { rootPath } = require('./config/path.config')
+const { rootPath } = require('../config/path.config')
 
 function main() {
   if (

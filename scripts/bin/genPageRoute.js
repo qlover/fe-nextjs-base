@@ -1,8 +1,8 @@
 // 生成所有非动态路由 pathname
-const { readdirSync, readdir, stat, statSync, writeFileSync } = require('fs')
+const { readdirSync, statSync, writeFileSync } = require('fs')
 const { join } = require('path')
-const { prePagesRootPath, preTypingsRootPath } = require('./util/prepath')
-const { arrayToTypes } = require('./util/typed')
+const { prePagesRootPath, preTypingsRootPath } = require('../util/prepath')
+const { arrayToTypes } = require('../util/typed')
 
 const exts = ['jsx', 'tsx', 'md', 'mdx'].join('|')
 const pageReg = new RegExp(`\.(${exts})$`)
@@ -20,7 +20,7 @@ function typedFile(types, stypes) {
 `
 }
 
-function getAllPages() {
+function main() {
   const pagesRootPath = prePagesRootPath()
 
   const result = []
@@ -58,8 +58,6 @@ function getAllPages() {
   console.log('[created success]', filePath)
 }
 
-getAllPages()
-
 /**
  * 文件遍历方法
  * @param filePath 需要遍历的文件路径
@@ -81,3 +79,5 @@ function fileDisplaySync(filePath, result = []) {
     }
   })
 }
+
+main()

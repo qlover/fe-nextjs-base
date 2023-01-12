@@ -1,4 +1,4 @@
-require('./scripts/initProject')
+require('./scripts/bin/initProject')
 const nextTranslate = require('next-translate')
 const withLess = require('next-with-less')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({

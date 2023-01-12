@@ -1,10 +1,10 @@
 const { writeFileSync, existsSync } = require('fs')
 const { join } = require('path')
-const i18n = require('../i18n')
-const { arrayToTypes } = require('./util/typed')
-const { mkdirsSync } = require('./util/files')
-const { preTypingsRootPath, preLocalesRootPath } = require('./util/prepath')
-const seoConfig = require('../src/config/seoConfig.json')
+const i18n = require('../../i18n')
+const { arrayToTypes } = require('../util/typed')
+const { mkdirsSync } = require('../util/files')
+const { preTypingsRootPath, preLocalesRootPath } = require('../util/prepath')
+const seoConfig = require('../../src/config/seoConfig.json')
 
 function genTpl(locales, pathname, nss) {
   return `// 对应 i18n.js 配置类型
@@ -29,7 +29,7 @@ function genLocaleFile(locale, ns) {
 }`
 }
 
-async function genI18n() {
+async function main() {
   const routers = Object.keys(i18n.pages)
     .filter((page) => {
       return page !== '*'
@@ -67,4 +67,4 @@ async function genI18n() {
   console.log('[success]', localeRootPath)
 }
 
-genI18n()
+main()
