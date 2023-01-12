@@ -16,6 +16,12 @@ declare namespace NodeJS {
      * 本地环境
      */
     readonly NEXT_PUBLIC_APP_ENV?: LocalApp.AppEnv
-    readonly NEXT_PUBLIC_SITE_ORIGIN?: string
+
+    /**
+     * 站点地址,用于 sitemap siteUrl
+     *
+     * 比如: http://localhost:3100
+     */
+    readonly NEXT_PUBLIC_SITE_URL?: string
   }
 }
