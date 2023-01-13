@@ -43,3 +43,4 @@ pages/_local
 src/pages/_local/
 __test.*
 .husky
+.vscode

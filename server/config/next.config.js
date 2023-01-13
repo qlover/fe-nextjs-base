@@ -2,7 +2,7 @@ const RewritesRedirects = require('../../src/config/share/RewritesRedirects')
 
 /** @type {import('next').NextConfig} */
 const serverNextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
 
   /**
    * 可将 /next/static 配置到 cdn

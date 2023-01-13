@@ -68,6 +68,12 @@ const TestAppPropsPage: Page.Component = (props) => {
         >
           to /test/dynamic/test_slug1 with zh
         </A>
+        <A
+          path="/test/cacheState"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/cacheState
+        </A>
       </div>
     </div>
   )

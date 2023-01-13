@@ -1,0 +1,6 @@
+{
+  "lis_cacheState": {
+    "prefix": "lis_cacheState",
+    "body": "const [innerState, setInnerState] = useCacheState({$1})"
+  }
+}
