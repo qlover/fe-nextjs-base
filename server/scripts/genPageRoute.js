@@ -1,8 +1,11 @@
 // 生成所有非动态路由 pathname
 const { readdirSync, statSync, writeFileSync } = require('fs')
 const { join } = require('path')
-const { prePagesRootPath, preTypingsRootPath } = require('../util/prepath')
-const { arrayToTypes } = require('../util/typed')
+const {
+  prePagesRootPath,
+  preTypingsRootPath,
+  arrayToTypes
+} = require('../util')
 
 const exts = ['jsx', 'tsx', 'md', 'mdx'].join('|')
 const pageReg = new RegExp(`\.(${exts})$`)
@@ -20,7 +23,10 @@ function typedFile(types, stypes) {
 `
 }
 
-function main() {
+/**
+ * 生成 pages 路由类型 PageRoute.d.ts
+ */
+function genPageRoute() {
   const pagesRootPath = prePagesRootPath()
 
   const result = []
@@ -55,7 +61,7 @@ function main() {
     typedFile(arrayToTypes(subPages), arrayToTypes(staticPagePath))
   )
 
-  console.log('[created success]', filePath)
+  console.log('[PageRoute.d.ts success]', filePath)
 }
 
 /**
@@ -80,4 +86,4 @@ function fileDisplaySync(filePath, result = []) {
   })
 }
 
-main()
+module.exports = { genPageRoute }

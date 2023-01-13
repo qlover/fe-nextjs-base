@@ -1,5 +1,5 @@
 declare namespace PageRoute {
-  type Path = '/' | '/markdown' | '/test/appProps' | '/testDir/dir1'
+  type Path = '/' | '/markdown' | '/test/[slug]' | '/test/appProps' | '/testDir/dir1' | '/testredirect'
 
-  type PathStatic = '/' | '/markdown' | '/test/appProps' | '/testDir/dir1'
+  type PathStatic = '/' | '/markdown' | '/test/appProps' | '/testDir/dir1' | '/testredirect'
 }  

@@ -1,9 +1,12 @@
 const { writeFileSync, existsSync } = require('fs')
 const { join } = require('path')
 const i18n = require('../../i18n')
-const { arrayToTypes } = require('../util/typed')
-const { mkdirsSync } = require('../util/files')
-const { preTypingsRootPath, preLocalesRootPath } = require('../util/prepath')
+const {
+  arrayToTypes,
+  mkdirsSync,
+  preTypingsRootPath,
+  preLocalesRootPath
+} = require('../util')
 const seoConfig = require('../../src/config/seoConfig.json')
 
 function genTpl(locales, pathname, nss) {
@@ -29,7 +32,10 @@ function genLocaleFile(locale, ns) {
 }`
 }
 
-async function main() {
+/**
+ * 生成 i18n 类型 和 locales 目录
+ */
+async function genI18n() {
   const routers = Object.keys(i18n.pages)
     .filter((page) => {
       return page !== '*'
@@ -47,7 +53,7 @@ async function main() {
     i18ndtsPath,
     genTpl(arrayToTypes(i18n.locales), arrayToTypes(routers), arrayToTypes(nss))
   )
-  console.log('[success]', i18ndtsPath)
+  console.log('[I18n.d.ts success]', i18ndtsPath)
 
   const localeRootPath = preLocalesRootPath()
 
@@ -64,7 +70,7 @@ async function main() {
       }
     })
   })
-  console.log('[success]', localeRootPath)
+  console.log('[i18n locales success]', localeRootPath)
 }
 
-main()
+module.exports = { genI18n }

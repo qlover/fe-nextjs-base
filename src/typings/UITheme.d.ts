@@ -1,3 +1,3 @@
 declare namespace UITheme {
-  type ThemeMode = 'system' | 'dark' | 'dark2'
+  type ThemeMode = 'dark' | 'dark2' | 'system'
 }  

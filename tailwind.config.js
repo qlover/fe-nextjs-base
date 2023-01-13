@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
-const { ovrriedWithRoot10PX } = require('./scripts/config/tailwind')
+const { ovrriedWithRoot10PX } = require('./server/config')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
