@@ -1,4 +1,4 @@
-import { getPageLocales } from '@/utils/server/i18n'
+import { getPageLocales } from '@/utils/common/i18n'
 import { isArray } from 'lodash'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'

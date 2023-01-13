@@ -6,7 +6,7 @@ declare namespace I18n {
 
   type Pathname = '/';
 
-  type I18nNS = '_rvdata' | 'common' | 'index'
+  type I18nNS = 'common' | 'index'
 
   type PagesType = Record<Pathname, Array<I18nNS>>;
 }

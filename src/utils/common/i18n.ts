@@ -32,3 +32,36 @@ export function getPageLocales(pathname: string) {
 export function getDefaultLocale() {
   return i18n.defaultLocale
 }
+
+/**
+ * 是否是默认国际化语言
+ *
+ * @param local
+ * @returns
+ */
+export function isDefaultLocale(local: string) {
+  return i18n.defaultLocale === local
+}
+
+/**
+ * 去掉路径中的默认语言
+ *
+ * @param path
+ * @returns
+ */
+export function dropDefaultLocale(path: string) {
+  return path.replace('/' + i18n.defaultLocale, '')
+}
+
+/**
+ * 是否以 locale 开头的 pathname
+ * @param pathname
+ */
+export function isLocalStartPathname(pathname: string) {
+  for (const locale of i18n.locales) {
+    if (pathname.startsWith('/' + locale)) {
+      return true
+    }
+  }
+  return false
+}

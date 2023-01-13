@@ -10,14 +10,15 @@ type StaticConfigType<P extends ParsedUrlQuery> = BaseConfigType<
   HandlerType<P>
 > & {
   /**
-   * 路径生成时，是否包含国际路由
+   * 静态生成是否包含国际化路由
    *
-   * 默认 true， true 默认表示所有多语言环境
+   * true 表示所有多语言环境
    *
    * 还可以指定 一组语言
    *
+   * @default false
    */
-  locales?: boolean | string[]
+  locales?: boolean | I18n.LocalesType
 }
 
 type HandlerType<Props extends ParsedUrlQuery = ParsedUrlQuery> = (
@@ -52,7 +53,7 @@ async function wrapperHandler<P extends PlainObject>(
 
   const { locales } = config
   if (locales) {
-    let innerlocales // = locales === true ? (context.locales || i18n.locales)
+    let innerlocales
     if (isArray(locales)) {
       innerlocales = locales
     } else {

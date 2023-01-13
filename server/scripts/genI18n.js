@@ -7,7 +7,7 @@ const {
   preTypingsRootPath,
   preLocalesRootPath
 } = require('../util')
-const seoConfig = require('../../src/config/seoConfig.json')
+const seoConfig = require('../../src/config/share/seoConfig.json')
 
 function genTpl(locales, pathname, nss) {
   return `// 对应 i18n.js 配置类型

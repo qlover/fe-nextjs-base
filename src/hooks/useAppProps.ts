@@ -1,4 +1,4 @@
-import { getDefaultLocale } from '@/utils/server/i18n'
+import { getDefaultLocale } from '@/utils/common/i18n'
 import { useCallback } from 'react'
 
 export type UseAppPropsType = {

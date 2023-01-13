@@ -1,3 +1,5 @@
+const RewritesRedirects = require('../../src/config/share/RewritesRedirects')
+
 /** @type {import('next').NextConfig} */
 const serverNextConfig = {
   reactStrictMode: false,
@@ -20,7 +22,11 @@ const serverNextConfig = {
   },
 
   // 支持 mdx
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+
+  async redirects() {
+    return RewritesRedirects
+  }
 }
 
 module.exports = {

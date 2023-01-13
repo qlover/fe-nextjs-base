@@ -45,9 +45,7 @@ async function wrapperHandler<P extends PlainObject = PlainObject>(
 ) {
   const { jsonTransform = true } = config
 
-  let result = {
-    props: { empty: '1' } as unknown as P
-  } as GetStaticPropsResult<P>
+  let result = { props: {} } as GetStaticPropsResult<P>
 
   if (config?.handler) {
     // result.revalidate = isNumber(config.revalidate)
@@ -79,7 +77,7 @@ async function wrapperHandler<P extends PlainObject = PlainObject>(
  * `handler`
  *    - 可以随意返回一个对象，会当作 props
  *    - 可以按规则返回会被 next 直接使用
- *    - 还可以什么都不返回，为了开发方便, 默认 返回 `props:{ empty:'1' }`
+ *    - 还可以什么都不返回，为了开发方便, 默认 返回 `props:{ }`
  *
  * @param config
  * @returns

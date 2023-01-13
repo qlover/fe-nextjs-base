@@ -1,0 +1,73 @@
+{
+  "lis_lessModule": {
+    "prefix": "lessModule",
+    "body": "import css from './index.module.less';"
+  },
+  "lis_cssModule": {
+    "prefix": "cssModule",
+    "body": "import css from './index.module.css';"
+  },
+
+  "lis_nextpage_ssg": {
+    "prefix": "lis_nextpage_ssg",
+    "body": [
+      "import { RootLayout } from \"@/components/layout\";",
+      "import ServerRenderer from \"@/utils/server/ServerRenderer\";",
+      "import useCacheState from '@/hooks/useCacheState';",
+      "",
+      "type ${1}Props = {}",
+      "",
+      "export const getStaticProps = ServerRenderer.ssg<${1}Props>({",
+      "  async handler(context){",
+      "",
+      "    return {",
+      "",
+      "    }",
+      "  }",
+      "});",
+      "",
+      "const ${1}: Page.Component<${1}Props> = (props) => {",
+      "",
+      "  const [innerState, setInnerState] = useCacheState({})",
+      "",
+      "  return <div></div>",
+      "};",
+      "",
+      "${1}.Layout = RootLayout;",
+      "",
+      "export default IndexPage;",
+      ""
+    ]
+  },
+  "lis_nextpage_ssr": {
+    "prefix": "lis_nextpage_ssr",
+    "body": [
+      "import { RootLayout } from \"@/components/layout\";",
+      "import ServerRenderer from \"@/utils/server/ServerRenderer\";",
+      "import useCacheState from '@/hooks/useCacheState';",
+      "",
+      "type ${1}Props = {}",
+      "",
+      "export const getServerSideProps = ServerRenderer.ssr<${1}Props>({",
+      "  async handler(context){",
+      "",
+      "    return {",
+      "",
+      "    }",
+      "  }",
+      "});",
+      "",
+      "const ${1}: Page.Component<${1}Props> = (props) => {",
+      "",
+      "  const [innerState, setInnerState] = useCacheState({})",
+      "",
+      "  return <div></div>",
+      "};",
+      "",
+      "${1}.Layout = RootLayout;",
+      "",
+      "export default IndexPage;",
+      ""
+    ]
+  }
+}

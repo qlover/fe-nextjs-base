@@ -17,9 +17,8 @@ module.exports = {
     /**
      * common 公共 i18n
      *
-     * _rvdata 本地使用通用数据，比如header,footer
      */
-    '*': ['common', '_rvdata'],
+    '*': ['common'],
 
     // 单独页面
     '/': ['index']

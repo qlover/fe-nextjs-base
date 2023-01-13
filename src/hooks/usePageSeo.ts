@@ -1,4 +1,4 @@
-import seoConfig from '@/config/seoConfig.json'
+import seoConfig from '@/config/share/seoConfig.json'
 import { useMemo } from 'react'
 import useI18n from './useI18n'
 
