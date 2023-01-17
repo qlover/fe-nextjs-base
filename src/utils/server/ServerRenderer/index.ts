@@ -2,6 +2,8 @@ import getServerSideProps from './getServerSideProps'
 import getStaticPaths from './getStaticPaths'
 import getStaticProps from './getStaticProps'
 
+export * from '../ServerRendererError'
+
 export type BaseConfigType<H> = {
   /**
    * 因为 接口数据可能返回 json 时, 值为 undefined, 而 next 在序列化数据时如果值为有 undefined 则会报 `SerializableError`
@@ -27,7 +29,7 @@ export type BaseConfigType<H> = {
  *
  *
  */
-const ServerRenderer = {
+export const ServerRenderer = {
   getServerSideProps,
   getStaticPaths,
   getStaticProps,
@@ -36,5 +38,3 @@ const ServerRenderer = {
   path: getStaticPaths,
   ssg: getStaticProps
 }
-
-export default ServerRenderer

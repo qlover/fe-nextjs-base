@@ -2,7 +2,7 @@ import { A } from '@/components/common'
 import { RootLayout } from '@/components/layout'
 import { Button } from '@/components/UITheme'
 import { useUITheme } from '@/hooks/useUITheme'
-import ServerRenderer from '@/utils/server/ServerRenderer'
+import { ServerRenderer } from '@/utils/server/ServerRenderer'
 
 export const getStaticProps = ServerRenderer.ssg()
 

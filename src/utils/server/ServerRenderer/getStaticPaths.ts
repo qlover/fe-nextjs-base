@@ -4,7 +4,6 @@ import { GetStaticPathsContext, GetStaticPathsResult } from 'next/types'
 import { ParsedUrlQuery } from 'querystring'
 import type { BaseConfigType } from '.'
 import { prepareForSerializatoin } from '../prepareForSerializatoin'
-import { RedirectError, ServerError } from '../ServerRendererError'
 
 type StaticConfigType<P extends ParsedUrlQuery> = BaseConfigType<
   HandlerType<P>
@@ -86,16 +85,7 @@ export default function getStaticPaths<
       return result
     } catch (e) {
       console.log('[RenderDispatch getStaticPaths error]', e)
-
-      if (e instanceof ServerError) {
-        return e.redirect()
-      }
-
-      if (e instanceof RedirectError) {
-        return e.redirect()
-      }
-
-      return new ServerError(e).redirect()
+      throw e
     }
   }
 }

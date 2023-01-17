@@ -1,4 +1,4 @@
-const RewritesRedirects = require('../../src/config/share/RewritesRedirects')
+const { RewritesRedirects } = require('./RewritesRedirects')
 
 /** @type {import('next').NextConfig} */
 const serverNextConfig = {

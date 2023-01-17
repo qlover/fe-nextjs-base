@@ -4,7 +4,7 @@ import type {
 } from 'next/types'
 import type { BaseConfigType } from '.'
 import { prepareForSerializatoin } from '../prepareForSerializatoin'
-import { RedirectError, ServerError } from '../ServerRendererError'
+import { ServerRendererError } from '../ServerRendererError'
 
 type HandlerType<Props> = (
   context: GetServerSidePropsContext
@@ -64,15 +64,15 @@ export default function getServerSideProps<P extends PlainObject>(
       return await wrapperHandler<P>(context, config)
     } catch (e) {
       if (catchError) {
-        if (e instanceof ServerError) {
-          return e.redirect()
+        if (e instanceof ServerRendererError) {
+          return e.redirect({ locale: context.locale as I18n.Locale })
         }
 
-        if (e instanceof RedirectError) {
-          return e.redirect()
-        }
-
-        return new ServerError(e).redirect()
+        return new ServerRendererError({
+          locale: context.locale as I18n.Locale,
+          pathname: '/500',
+          message: String(e)
+        }).redirect()
       }
     }
   }

@@ -16,21 +16,27 @@ type DestinationProps = {
    * 重定向目的地址, 对应 `destination`
    *
    * 如果以默认 locale 开头会自动去掉
+   *
+   * 只支持短路径，不支持全路径, 如 `/test` `/test2`, 不支持 `localhost:3100/test` `localhost:3100/test2`
    */
-  pathname?: string
+  pathname: string
 
   query?: LisNS.PlainObject | ParsedUrlQuery
+
+  /**
+   * 为 false 时 next.config.js basePath
+   * 字符串时，路径前缀，可支持全路径
+   */
+  basePath?: false | string
 }
 
-type RedirectProps = DestinationProps & {
+export type RedirectProps = DestinationProps & {
   /**
    * 状态码
    */
-  statusCode?: 404 | 301 | 302 | 303 | 307 | 308
+  statusCode?: 301 | 302 | 303 | 307 | 308
 
   permanent?: boolean
-
-  basePath?: false
 }
 
 /**
@@ -73,22 +79,17 @@ export function createRedirect(props: RedirectProps) {
   if (typeof permanent === 'boolean') {
     return {
       permanent: permanent,
-      destination: genDestination({ pathname, query, locale }),
-      basePath: basePath
+      destination: genDestination({ pathname, query, locale, basePath }),
+      basePath: typeof basePath == 'boolean' ? basePath : undefined
     }
   }
 
-  // 404
-  if (statusCode === 404) {
-    pathname = '/404'
-  }
-
-  const destination = genDestination({ pathname, query, locale })
+  const destination = genDestination({ pathname, query, locale, basePath })
 
   return {
-    statusCode: statusCode === 404 ? 302 : statusCode,
+    statusCode: statusCode,
     destination: destination,
-    basePath: basePath
+    basePath: typeof basePath == 'boolean' ? basePath : undefined
   }
 }
 
@@ -98,7 +99,7 @@ export function createRedirect(props: RedirectProps) {
  * @returns
  */
 export function genDestination(props: DestinationProps) {
-  const { pathname = '/', locale, query } = props
+  const { basePath, pathname = '/', locale, query } = props
 
   let destination: string = pathname
 
@@ -115,6 +116,11 @@ export function genDestination(props: DestinationProps) {
   // 增加参数
   if (query) {
     destination = padPathnameQS(destination, query)
+  }
+
+  // 添加前缀
+  if (typeof basePath === 'string') {
+    destination = concatPath(basePath, destination)
   }
 
   return destination

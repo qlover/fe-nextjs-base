@@ -1,5 +1,5 @@
 declare namespace PageRoute {
-  type Path = '/' | '/markdown' | '/test' | '/test/cacheState' | '/test/dynamic/[slug]' | '/test/withqs'
+  type Path = '/' | '/404' | '/500' | '/test' | '/test/cacheState' | '/test/dynamic/[slug]' | '/test/empty' | '/test/markdown/markdown' | '/test/srender' | '/test/srender/error1' | '/test/srender/error2' | '/test/withqs'
 
-  type PathStatic = '/' | '/markdown' | '/test' | '/test/cacheState' | '/test/withqs'
+  type PathStatic = '/' | '/404' | '/500' | '/test' | '/test/cacheState' | '/test/empty' | '/test/markdown/markdown' | '/test/srender' | '/test/srender/error1' | '/test/srender/error2' | '/test/withqs'
 }  

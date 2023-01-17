@@ -1,5 +1,5 @@
 import { RootLayout } from '@/components/layout'
-import ServerRenderer from '@/utils/server/ServerRenderer'
+import { ServerRenderer } from '@/utils/server/ServerRenderer'
 import { useRouter } from 'next/router'
 
 type TestWithQSPageProps = {}

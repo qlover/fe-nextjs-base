@@ -1,6 +1,6 @@
 import { A } from '@/components/common'
 import { createRedirect } from '@/utils/common/Redirect'
-import ServerRenderer from '@/utils/server/ServerRenderer'
+import { ServerRenderer } from '@/utils/server/ServerRenderer'
 import { useRouter } from 'next/router'
 
 export const getStaticProps = ServerRenderer.ssg({})
@@ -73,6 +73,29 @@ const TestAppPropsPage: Page.Component = (props) => {
           className="text-blue-400 hover:underline hover:text-blue-500"
         >
           to /test/cacheState
+        </A>
+      </div>
+
+      <div className="my-3 space-x-4">
+        <h2 className="text-2xl">Links</h2>
+
+        <A
+          path="/test/srender"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/srender
+        </A>
+        <A
+          path="/test/srender/error1"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/srender/error1
+        </A>
+        <A
+          path="/test/srender/error2"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/srender/error2
         </A>
       </div>
     </div>

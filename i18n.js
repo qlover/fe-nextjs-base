@@ -1,12 +1,8 @@
+const { appConfig } = require('./server/config')
+
 module.exports = {
-  /** @type I18n.LocalesType */
-  locales: ['en', 'zh'],
 
-  /** @type I18n.Locale */
-  defaultLocale: 'en',
-
-  // 禁止本地检测
-  localeDetection: false,
+  ...appConfig.i18n,
 
   /**
    * 原则上是一个页面路由对应单独 locale 文件

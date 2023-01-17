@@ -1,6 +1,6 @@
 import { RootLayout } from '@/components/layout'
-import ServerRenderer from '@/utils/server/ServerRenderer'
-import RewritesRedirects from '../../../../config/share/RewritesRedirects'
+import { ServerRenderer } from '@/utils/server/ServerRenderer'
+
 const slugList = ['test_slug']
 
 type TestSlugPageProps = {
@@ -49,8 +49,6 @@ export const getStaticProps = ServerRenderer.ssg<TestSlugPageProps>({
  * @returns
  */
 const TestSlugPage: Page.Component<TestSlugPageProps> = (props) => {
-  console.log(RewritesRedirects)
-
   return (
     <div>
       <h1 className="text-3xl">Test Dynmic [slug]</h1>

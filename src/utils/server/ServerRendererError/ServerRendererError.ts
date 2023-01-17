@@ -1,43 +1,40 @@
-import type { Redirect } from 'next/types'
+import { createRedirect, RedirectProps } from '@/utils/common/Redirect'
+import type { Redirect } from 'next'
 
-type ErrorConfig = {
-  code: 404 | 500 | 302
+interface ServerRendererErrorInterface {
+  redirect(): { redirect: Redirect; revalidate?: number | boolean }
+}
+
+export type ServerRendererErrorProps = RedirectProps & {
+  revalidate?: number | boolean
+
   message?: string
+  options?: ErrorOptions
 }
 
-const CodeMap: any = {
-  404: { notFound: true },
-  500: {
-    redirect: {
-      destination: '/500',
-      permanent: false
+export default class ServerRendererError
+  extends Error
+  implements ServerRendererErrorInterface
+{
+  props: ServerRendererErrorProps
+
+  constructor(props: ServerRendererErrorProps) {
+    super(props.message, props.options)
+    this.props = props
+  }
+
+  redirect(props?: Partial<ServerRendererErrorProps>): {
+    redirect: Redirect
+    revalidate?: number | boolean | undefined
+  } {
+    const { message, options, revalidate, ...crprops } = this.props
+
+    const redirect = createRedirect({ ...crprops, ...props })
+
+    if (typeof revalidate === 'boolean' || typeof revalidate === 'number') {
+      return { redirect, revalidate }
     }
-  }
-}
 
-export default class ServerRendererError extends Error {
-  _app_config: ErrorConfig = {
-    code: 500
-  }
-  constructor(config: ErrorConfig) {
-    super(
-      config.message
-        ? 'ServerRendererError:' + config.message
-        : 'ServerRendererError'
-    )
-
-    this._app_config = config
-  }
-
-  /**
-   * getServerSideProps 和 getStaticProps 都包含 redirect 或 notFound
-   *
-   * ServerRendererError 所以默认支持 ssr 返回结果, 后期改变可重写
-   *
-   */
-  redirect():
-    | { redirect: Redirect; revalidate?: number | boolean }
-    | { notFound: true; revalidate?: number | boolean } {
-    return CodeMap[this._app_config.code] || CodeMap['404']
+    return { redirect }
   }
 }

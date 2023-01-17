@@ -14,7 +14,7 @@
     "body": [
       "import { RootLayout } from '@/components/layout'",
       "import useCacheState from '@/hooks/common/useCacheState'",
-      "import ServerRenderer from '@/utils/server/ServerRenderer'",
+      "import { ServerRenderer } from '@/utils/server/ServerRenderer'",
       "",
       "type $1Props = {}",
       "",
@@ -46,7 +46,7 @@
     "body": [
       "import { RootLayout } from '@/components/layout'",
       "import useCacheState from '@/hooks/common/useCacheState'",
-      "import ServerRenderer from '@/utils/server/ServerRenderer'",
+      "import { ServerRenderer } from '@/utils/server/ServerRenderer'",
       "",
       "type $1Props = {}",
       "",

@@ -1,6 +1,6 @@
 import { RootLayout } from '@/components/layout'
 import useCacheState from '@/hooks/common/useCacheState'
-import ServerRenderer from '@/utils/server/ServerRenderer'
+import { ServerRenderer } from '@/utils/server/ServerRenderer'
 import { useEffect, useRef } from 'react'
 
 type TestCacheStateProps = {}

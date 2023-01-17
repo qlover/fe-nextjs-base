@@ -6,7 +6,7 @@ import type {
 } from 'next/types'
 import type { BaseConfigType } from '.'
 import { prepareForSerializatoin } from '../prepareForSerializatoin'
-import { RedirectError, ServerError } from '../ServerRendererError'
+import { ServerRendererError } from '../ServerRendererError'
 
 type StaticConfigType<P> = BaseConfigType<HandlerType<P>> & {
   /**
@@ -91,18 +91,15 @@ export default function getStaticProps<P extends PlainObject = PlainObject>(
     } catch (e) {
       console.log('[RenderDispatch getStaticProps error]', e)
 
-      if (e instanceof ServerError) {
-        return e.redirect()
+      if (e instanceof ServerRendererError) {
+        return e.redirect({ locale: context.locale as I18n.Locale })
       }
 
-      if (e instanceof RedirectError) {
-        return e.redirect()
-      }
-
-      return {
-        props: {} as P,
-        revalidate: config.revalidate
-      }
+      return new ServerRendererError({
+        locale: context.locale as I18n.Locale,
+        pathname: '/500',
+        message: String(e)
+      }).redirect()
     }
   }
 
