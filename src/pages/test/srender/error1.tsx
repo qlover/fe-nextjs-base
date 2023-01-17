@@ -6,13 +6,14 @@ import {
 
 type TestSRenderError1PageProps = {}
 
-export const getStaticProps = ServerRenderer.ssg<TestSRenderError1PageProps>({
-  async handler(context) {
-    throw new ServerRendererError({
-      pathname: '/404'
-    })
-  }
-})
+export const getServerSideProps =
+  ServerRenderer.ssr<TestSRenderError1PageProps>({
+    async handler(context) {
+      throw new ServerRendererError({
+        pathname: '/404'
+      })
+    }
+  })
 
 const TestSRenderError1Page: Page.Component<TestSRenderError1PageProps> = (
   props
