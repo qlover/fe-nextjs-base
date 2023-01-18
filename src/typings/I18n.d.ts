@@ -11,7 +11,7 @@ declare namespace I18n {
   type PagesType = Record<Pathname, Array<I18nNS>>;
 
   type LocalesTranMap = {
-    common: 'seo_desc' | 'seo_keywords' | 'seo_title'
+    common: '404_desc' | '404_title' | '500_desc' | '500_title' | 'go_back' | 'seo_desc' | 'seo_keywords' | 'seo_title'
     index: 'seo_desc' | 'seo_keywords' | 'seo_title'
 
   }

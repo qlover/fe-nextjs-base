@@ -1,5 +1,11 @@
 {
   "seo_title": "zh:common SEO Title",
   "seo_desc": "zh:common SEO desc",
-  "seo_keywords": "zh:common SEO keywords"
+  "seo_keywords": "zh:common SEO keywords",
+
+  "go_back": "返回首页",
+  "404_title": "无法找到该页面",
+  "404_desc": "请检查地址栏中的URL是否正确，然后重试。",
+  "500_title": "服务器错误",
+  "500_desc": "请检查地址栏中的URL是否正确，然后重试。"
 }

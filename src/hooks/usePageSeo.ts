@@ -24,9 +24,9 @@ export default function usePageSeo(props?: UseI18nProps) {
 
   const seoResult = useMemo(() => {
     return {
-      title: t(localeSeoTitleKey) || title,
-      description: t(localeSeoDescKey) || description,
-      keywords: t(localeSeoKeywordKey) || keywords
+      title: t(localeSeoTitleKey as any) || title,
+      description: t(localeSeoDescKey as any) || description,
+      keywords: t(localeSeoKeywordKey as any) || keywords
     }
   }, [locale])
 
