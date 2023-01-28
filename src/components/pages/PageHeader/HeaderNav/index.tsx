@@ -1,7 +1,7 @@
 import A from '@/components/common/A'
 import IconFont from '@/components/common/IconFont'
 import useI18nCommon from '@/hooks/useI18nCommon'
-import { HeadNavOptions } from '@/sources/locales/common'
+import { HeadActionOptions, HeadNavOptions } from '@/sources/locales/common'
 import { domDataLanguage, mapChildren } from '@/utils/client'
 import { FC } from 'react'
 import { PageHeaderContainer } from '../container'
@@ -30,7 +30,7 @@ function NavItem({ value, active }: { active: boolean; value: any }) {
 }
 
 const HeaderNav: FC<HeaderNavProps> = () => {
-  const { lang } = useI18nCommon()
+  const { lang, commonT } = useI18nCommon()
 
   const { currentNavKey, onChangeOpenDrawer } =
     PageHeaderContainer.useContainer()
@@ -44,9 +44,9 @@ const HeaderNav: FC<HeaderNavProps> = () => {
       </nav>
 
       <div className="header-actions hidden xl:flex lg:items-center space-x-2">
-        <span>action 1</span>
-        <span>action 2</span>
-        <span>action 3</span>
+        {mapChildren(HeadActionOptions, ({ key, item }) => (
+          <span key={key}>{commonT(item.title)}</span>
+        ))}
       </div>
 
       <div className="mobile-actions">

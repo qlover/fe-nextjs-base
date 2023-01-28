@@ -6,7 +6,8 @@ const {
   readdirSync,
   unlinkSync,
   rmdirSync,
-  writeFileSync
+  writeFileSync,
+  readFileSync
 } = require('fs')
 const { isPlainObject } = require('lodash')
 
@@ -114,8 +115,8 @@ function sortJsonFile(path, compareFn) {
  */
 function getJsonFile(path) {
   try {
-    const result = require(path)
-
+    let result = readFileSync(path).toString()
+    result = JSON.parse(result)
     return isPlainObject(result) ? result : {}
   } catch {
     // Unexpected end of JSON input

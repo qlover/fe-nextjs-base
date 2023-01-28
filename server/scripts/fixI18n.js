@@ -1,8 +1,8 @@
-const { readdirSync, existsSync, writeFileSync } = require('fs');
-const { first, assignIn, cloneDeep, isUndefined } = require('lodash');
+const { writeFileSync } = require('fs');
+const { isUndefined } = require('lodash');
 const { join } = require('path');
 const i18n = require('../../i18n');
-const { preLocalesRootPath, sortJsonFile, getJsonFile, sortPlainObject } = require('../util')
+const { preLocalesRootPath, getJsonFile, sortPlainObject } = require('../util')
 
 const nss = Object.values(i18n.pages).flat().sort()
 

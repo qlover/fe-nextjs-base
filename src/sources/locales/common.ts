@@ -8,6 +8,12 @@ export const HeadNavOptions = [
   { key: 'nav5', title: 'header_nav5' as CommonI18Type, href: '' }
 ]
 
+export const HeadActionOptions = [
+  { key: 'action1', title: 'header_action1' as CommonI18Type, href: '' },
+  { key: 'action2', title: 'header_action2' as CommonI18Type, href: '' },
+  { key: 'action3', title: 'header_action3' as CommonI18Type, href: '' }
+]
+
 export const FooterNavOptions = [
   {
     key: 'footer_nav1',
