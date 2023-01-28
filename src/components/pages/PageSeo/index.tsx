@@ -1,5 +1,6 @@
-import type { NextSeoProps } from 'next-seo'
+import { NextSeo, NextSeoProps } from 'next-seo'
 import { FC } from 'react'
+import usePageSeo from './usePageSeo'
 
 export type PageSeoProps = NextSeoProps & {
   i18nNS?: I18n.I18nNS
@@ -18,8 +19,10 @@ export type PageSeoProps = NextSeoProps & {
   isCanonical?: boolean
 }
 
-const PageSeo: FC<PageSeoProps> = () => {
-  return <div className="PageSeo-wrapper"></div>
+const PageSeo: FC<PageSeoProps> = (props) => {
+  const seoProps = usePageSeo(props)
+
+  return <NextSeo {...seoProps} />
 }
 
 export default PageSeo

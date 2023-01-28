@@ -1,4 +1,5 @@
 import { A } from '@/components/common'
+import { TestLayout } from '@/components/layout'
 import useI18n from '@/hooks/useI18n'
 import { createRedirect } from '@/utils/common/Redirect'
 import { ServerRenderer } from '@/utils/server/ServerRenderer'
@@ -101,5 +102,7 @@ const TestAppPropsPage: Page.Component = (props) => {
     </div>
   )
 }
+
+TestAppPropsPage.Layout = TestLayout
 
 export default TestAppPropsPage
