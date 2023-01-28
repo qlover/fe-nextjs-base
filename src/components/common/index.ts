@@ -1,2 +1,6 @@
 export { default as A } from './A'
+export { default as Drawer } from './Drawer'
+export { default as IconFont } from './IconFont'
+export { default as Img } from './Img'
 export { default as Seo } from './Seo'
+export { default as StringWithHTML } from './StringWithHTML'

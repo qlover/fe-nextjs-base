@@ -1,7 +1,7 @@
 import Image, { ImageProps } from 'next/image'
 import { forwardRef } from 'react'
 
-export type ImgProps = ImageProps
+export type ImgProps = Partial<ImageProps>
 
 /**
  * img 组件
@@ -16,14 +16,14 @@ const Img = forwardRef<HTMLImageElement, Component.WithChildren<ImgProps>>(
     return (
       <Image
         ref={ref}
-        src={src}
+        src={src || ''}
         loading={loading}
         className={className}
         title=""
         width={200}
         height={200}
         {...props}
-        alt={props.alt}
+        alt={props.alt || ''}
       />
     )
   }

@@ -1,5 +1,5 @@
 {
-  "seo_title": "zh:index SEO Title",
-  "seo_desc": "zh:index SEO desc",
-  "seo_keywords": "zh:index SEO keywords"
+  "$seo_desc": "zh:index SEO desc",
+  "$seo_keywords": "zh:index SEO keywords",
+  "$seo_title": "zh:index SEO Title"
 }

@@ -7,4 +7,17 @@ function firstCaseUpper(title) {
   return title
 }
 
-module.exports = { firstCaseUpper }
+/**
+ * 对象按键值对排序显示
+ * @param {*} obj 
+ * @returns 
+ */
+function sortPlainObject(obj, compareFn) {
+  const result = {}
+  Object.keys(obj).sort(compareFn).forEach((key) => {
+    result[key] = obj[key]
+  })
+  return result
+}
+
+module.exports = { firstCaseUpper, sortPlainObject }

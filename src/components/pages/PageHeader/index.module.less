@@ -1,0 +1,22 @@
+.page-haeder {
+  z-index: 100;
+  @apply sticky  top-0 bg-white text-secondary shadow-sm;
+
+  .header-inner {
+    min-height: 64px;
+    // FIXME::
+    @apply max-w-screen-maxxl justify-between flex mx-auto h-full px-3 sm:px-8;
+
+    @apply xl:px-40;
+
+    :global {
+      .page-logo {
+        @apply inline-flex self-center items-center mr-2 md:mr-10 2xl:mr-12 3xl:mr-20;
+      }
+    }
+  }
+}
+
+.scrolled {
+  @apply shadow-sm;
+}

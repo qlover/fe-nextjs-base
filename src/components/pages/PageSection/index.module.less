@@ -1,0 +1,48 @@
+.wrapper {
+  :global {
+    .PageSection-head {
+      @apply text-center pt-12;
+    }
+    @media (min-width: theme('screens.md')) {
+      .PageSection-head {
+        @apply pt-24;
+      }
+    }
+    .pageSection-title {
+      h2 {
+        font-size: 3rem;
+      }
+
+      @media (min-width: theme('screens.sm')) {
+        h2 {
+          // font-size: 5rem;
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+  :global {
+    .PageSection-main {
+      @apply mx-auto px-3 md:px-8 xl:px-14 2xl:px-0;
+    }
+
+    // TODO 去掉默认
+    .PageSection-body {
+      max-width: 1204px;
+      @apply mx-auto pt-10 2xl:px-0;
+    }
+
+    .pageSection-subtitle {
+      font-size: 1.4rem;
+      max-width: 1214px;
+      margin-top: 4.125rem;
+      @apply mx-auto ~"space-y-[2.4rem]" text-[#9290A2];
+    }
+
+    @media (min-width: theme('screens.md')) {
+      .pageSection-subtitle {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

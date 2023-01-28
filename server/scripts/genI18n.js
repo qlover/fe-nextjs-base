@@ -71,6 +71,7 @@ async function genI18n() {
     })
   })
   console.log('[i18n locales success]', localeRootPath)
+
 }
 
 module.exports = { genI18n }

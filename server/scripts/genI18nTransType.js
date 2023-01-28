@@ -3,8 +3,6 @@ const { join } = require('path')
 const i18n = require('../../i18n')
 const { preLocalesRootPath, arrayToTypes, preTypingsRootPath } = require('../util')
 
-const localesTypeMap = ``
-
 function genI18nTransType() {
   const locales = preLocalesRootPath()
 

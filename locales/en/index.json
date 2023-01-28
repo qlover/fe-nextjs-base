@@ -1,5 +1,5 @@
 {
-  "seo_title": "en:index SEO Title",
-  "seo_desc": "en:index SEO desc",
-  "seo_keywords": "en:index SEO keywords"
+  "$seo_desc": "en:index SEO desc",
+  "$seo_keywords": "en:index SEO keywords",
+  "$seo_title": "en:index SEO Title"
 }

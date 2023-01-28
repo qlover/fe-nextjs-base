@@ -5,10 +5,13 @@ const {
   existsSync,
   readdirSync,
   unlinkSync,
-  rmdirSync
+  rmdirSync,
+  writeFileSync
 } = require('fs')
+const { isPlainObject } = require('lodash')
 
 const { dirname, join } = require('path')
+const { sortPlainObject } = require('./tools')
 
 function fillFileName(filename, ext) {
   return filename + ext
@@ -93,6 +96,33 @@ function delDir(path) {
   }
 }
 
+/**
+ * 排序 json 文件内容
+ * @param {*} path 
+ * @param {*} compareFn 
+ */
+function sortJsonFile(path, compareFn) {
+  const localeJson = getJsonFile(path)
+  const result = sortPlainObject(localeJson, compareFn)
+  writeFileSync(path, JSON.stringify(result, null, 2) + '\n')
+}
+
+/**
+ * 获取 json 文件内容
+ * @param {*} path 
+ * @returns 
+ */
+function getJsonFile(path) {
+  try {
+    const result = require(path)
+
+    return isPlainObject(result) ? result : {}
+  } catch {
+    // Unexpected end of JSON input
+    return {}
+  }
+}
+
 module.exports = {
   fillFileName,
   isDir,
@@ -100,5 +130,5 @@ module.exports = {
   isFile,
   isFileAsync,
   mkdirsSync,
-  delDir
+  delDir, sortJsonFile, getJsonFile
 }

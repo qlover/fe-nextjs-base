@@ -1,0 +1,30 @@
+.HeaderNav {
+  @apply flex-1 flex justify-between items-center;
+  :global {
+    .header-nav {
+      @apply hidden md:flex;
+      > * {
+        @apply px-3;
+
+        &.active,
+        &:hover {
+          @apply text-[#1e44ff];
+        }
+      }
+    }
+    .ant-dropdown-open {
+      @apply text-[#1e44ff];
+    }
+
+    nav {
+      .ant-dropdown-trigger {
+        padding-left: 3rem;
+        @apply ml-0 flex;
+      }
+    }
+
+    .mobile-actions {
+      @apply flex lg:hidden flex-1  items-center justify-end;
+    }
+  }
+}

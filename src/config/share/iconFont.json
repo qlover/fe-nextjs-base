@@ -1,5 +1,5 @@
 {
   "unicode": "@font-face {font-family: 'iconfont';src: url('//at.alicdn.com/t/c/font_3814331_lrr6re8gnb.woff2?t=1673599791986') format('woff2'),url('//at.alicdn.com/t/c/font_3814331_lrr6re8gnb.woff?t=1673599791986') format('woff'),url('//at.alicdn.com/t/c/font_3814331_lrr6re8gnb.ttf?t=1673599791986') format('truetype');}",
-  "js": "//at.alicdn.com/t/c/font_3814331_lrr6re8gnb.js",
-  "css": "//at.alicdn.com/t/c/font_3814331_lrr6re8gnb.css"
+  "js": "https://at.alicdn.com/t/c/font_3814331_4ivi43jsh5t.js",
+  "css": "https://at.alicdn.com/t/c/font_3814331_4ivi43jsh5t.css"
 }

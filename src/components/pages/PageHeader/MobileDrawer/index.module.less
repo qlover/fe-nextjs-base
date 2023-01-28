@@ -1,0 +1,47 @@
+.mobileDrawer {
+  :global {
+    .drawer-inner {
+      font-size: 1.6rem;
+
+      @apply h-full relative flex flex-col justify-between  font-medium;
+    }
+
+    .MobileDrawer-footer {
+      // margin-top: 4rem;
+      font-size: 1.6rem;
+      @apply space-y-4;
+      > a {
+        font-size: inherit;
+        min-height: 40px;
+      }
+    }
+    .nav-menu {
+      .menu-Item {
+        @apply block py-1;
+      }
+      .sub-item {
+        @apply pl-4;
+      }
+    }
+
+    .ant-collapse {
+      font-size: inherit;
+      @apply border-0 bg-inherit;
+      > .ant-collapse-item {
+        @apply border-0;
+
+        > .ant-collapse-header {
+          @apply flex-row-reverse p-2;
+        }
+      }
+
+      .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header {
+        @apply p-2;
+      }
+    }
+
+    .ant-collapse-content > .ant-collapse-content-box {
+      @apply p-2;
+    }
+  }
+}

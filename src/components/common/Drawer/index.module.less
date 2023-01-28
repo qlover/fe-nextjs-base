@@ -1,0 +1,26 @@
+// drawer-head text-lg font-medium text-gray-900 flex justify-between items-center min-h-[50px] pr-5
+.drawer-root {
+  @apply p-0;
+}
+.drawer {
+  @apply p-0;
+
+  .close-icon {
+    right: 2rem;
+    @apply absolute;
+  }
+  :global {
+    .drawer-head {
+      min-height: 24px;
+      @apply flex justify-between;
+    }
+    .ant-drawer-content-wrapper {
+      min-width: 70%;
+    }
+    .ant-drawer-body {
+      @apply p-2;
+    }
+    .ant-drawer-footer {
+    }
+  }
+}
