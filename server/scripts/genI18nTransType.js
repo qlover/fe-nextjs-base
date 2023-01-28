@@ -36,11 +36,14 @@ function genI18nTransType() {
     // const lastIndex = contentWithEnter.findIndex(ele => ele === '}')
     let firstAdd = targetIndex < 0
     if (firstAdd) {
-      targetIndex = contentWithEnter.length - 2
+      targetIndex = contentWithEnter.length - 1
     }
 
     contentWithEnter.splice(targetIndex)
     contentWithEnter.push(`${firstAdd ? '\n' : ''}  type LocalesTranMap = { \n${LocalesTypeString}  }`)
+
+    contentWithEnter.push('  type TransKeys = ValueOf<LocalesTranMap>\n')
+
     contentWithEnter.push('}\n')
 
     writeFileSync(i18ndtsPath, contentWithEnter.join('\n'))

@@ -17,6 +17,8 @@ module.exports = {
     '*': ['common'],
 
     // 单独页面
-    '/': ['index']
+    '/': ['index'],
+
+    '/test': ['test']
   }
 }

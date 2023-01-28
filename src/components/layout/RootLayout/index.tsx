@@ -1,4 +1,4 @@
-import { PageFooter, PageHeader } from '@/components/pages'
+import { PageFooter, PageHeader, PageSeo } from '@/components/pages'
 import { FC } from 'react'
 
 type RootLayoutProps = {}
@@ -8,6 +8,8 @@ const RootLayout: FC<Component.WithChildren<RootLayoutProps>> = ({
 }) => {
   return (
     <div className="RootLayout-wrapper">
+      <PageSeo />
+
       <PageHeader />
       <main>{children}</main>
       <PageFooter />

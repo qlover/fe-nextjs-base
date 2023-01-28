@@ -1,16 +1,16 @@
 import { A } from '@/components/common'
+import useI18n from '@/hooks/useI18n'
 import { createRedirect } from '@/utils/common/Redirect'
 import { ServerRenderer } from '@/utils/server/ServerRenderer'
-import { useRouter } from 'next/router'
 
 export const getStaticProps = ServerRenderer.ssg({})
 
 const TestAppPropsPage: Page.Component = (props) => {
-  const router = useRouter()
+  const { t, router } = useI18n()
 
   return (
     <div>
-      <h1 className="text-3xl">Test Page</h1>
+      <h1 className="text-3xl">{t('test_pagetitle')}</h1>
 
       <div className="my-3 space-x-4">
         <h2 className="text-2xl">component A</h2>

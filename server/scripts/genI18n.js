@@ -21,6 +21,18 @@ declare namespace I18n {
   type I18nNS = ${nss}
 
   type PagesType = Record<Pathname, Array<I18nNS>>;
+
+  type ExtendTranslate<T = string, TKeys = string> = (
+    i18nKey: TKeys,
+    query?: import('next-translate').TranslationQuery | null,
+    options?: {
+      returnObjects?: boolean
+      fallback?: string | string[]
+      default?: string
+      ns?: string
+    }
+  ) => T
+  
 }`
 }
 

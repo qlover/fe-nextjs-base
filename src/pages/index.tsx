@@ -7,10 +7,7 @@ import { ServerRenderer } from '@/utils/server/ServerRenderer'
 export const getStaticProps = ServerRenderer.ssg()
 
 const IndexPage: Page.Component = (props) => {
-  console.log('props', props)
-
   const { theme, setTheme } = useUITheme()
-  console.log('IndexPage')
 
   return (
     <>
