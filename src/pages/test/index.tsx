@@ -14,12 +14,17 @@ const TestAppPropsPage: Page.Component = (props) => {
       <h1 className="text-3xl">{t('test_pagetitle')}</h1>
 
       <div className="my-3 space-x-4">
-        <h2 className="text-2xl">component A</h2>
         <A
           path="/test/store"
           className="text-blue-400 hover:underline hover:text-blue-500"
         >
           to /test/store
+        </A>
+        <A
+          path="/test/storage"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/storage
         </A>
       </div>
 

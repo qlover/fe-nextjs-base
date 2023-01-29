@@ -1,4 +1,5 @@
 import { RootLayout } from '@/components/layout'
+import { serialize } from '@/utils/common/serialize'
 import { ServerRenderer } from '@/utils/server/ServerRenderer'
 import { useRouter } from 'next/router'
 
@@ -14,7 +15,7 @@ const TestWithQSPage: Page.Component<TestWithQSPageProps> = (props) => {
       <h1 className="text-3xl">TestWithQSPage</h1>
 
       <div className="my-3 space-x-4">
-        <div>QS: {JSON.stringify(query)}</div>
+        <div>QS: {serialize(query)}</div>
       </div>
     </div>
   )

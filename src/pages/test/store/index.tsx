@@ -18,7 +18,7 @@ const SotrePage: Page.Component<SotrePageProps> = (props) => {
     follow: 88,
     comment: 55
   })
-  const { dispatch, state } = useStores(selectAuthState)
+  const [state, dispatch] = useStores(selectAuthState)
   console.log(state)
 
   return (

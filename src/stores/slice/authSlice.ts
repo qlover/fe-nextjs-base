@@ -1,3 +1,4 @@
+import { localUserInfo } from '@/utils/client/Storage'
 import { createSlice } from '@reduxjs/toolkit'
 import { isBrower } from 'maroonlis-utils'
 import type { StoreState } from '../store'
@@ -7,24 +8,28 @@ export const authSlice = createSlice({
   initialState: () => {
     if (isBrower()) {
       return {
-        authState: !!localStorage.getItem('authslice'),
-        authUser: ''
-      }
+        authState: false,
+        authUser: localUserInfo.get<Stores.AuthState['authUser']>({
+          name: '',
+          id: 0,
+          money: 0
+        })
+      } as Stores.AuthState
     }
 
     return {
       authState: false,
       authUser: ''
-    }
+    } as Stores.AuthState
   },
   reducers: {
     setAuthState(state, action) {
       state.authState = action.payload
-
-      localStorage.setItem('authslice', action.payload ? 'true' : '')
     },
     setAuthUser(state, action) {
-      state.authUser = action.payload
+      state.authUser = { ...state.authUser, ...action.payload }
+
+      localUserInfo.set(action.payload)
     }
   }
 })
