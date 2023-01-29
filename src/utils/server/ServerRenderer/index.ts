@@ -28,6 +28,8 @@ export type BaseConfigType<H> = {
  * 服务端统一渲染器，包含
  *
  *
+ * @todo 渲染使用设计模式，可组合其他逻辑
+ *
  */
 export const ServerRenderer = {
   getServerSideProps,

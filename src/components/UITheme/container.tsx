@@ -12,6 +12,11 @@ type UIThemeProps = {
 
 export const UIThemeContainer = createContainer(useUITheme)
 
+/**
+ * 页面主题服务提供
+ * @param param0
+ * @returns
+ */
 export const UIThemeContext: FC<UIThemeProps> = ({ value, children }) => {
   return (
     <UIThemeContainer.Provider>
