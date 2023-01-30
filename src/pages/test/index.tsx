@@ -26,6 +26,12 @@ const TestAppPropsPage: Page.Component = (props) => {
         >
           to /test/storage
         </A>
+        <A
+          path="/test/service"
+          className="text-blue-400 hover:underline hover:text-blue-500"
+        >
+          to /test/service
+        </A>
       </div>
 
       <div className="my-3 space-x-4">
