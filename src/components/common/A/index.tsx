@@ -2,7 +2,13 @@ import useAElement from '@/hooks/useAElement'
 import Link, { LinkProps } from 'next/link'
 import { forwardRef } from 'react'
 
-export type AProps = Partial<Omit<LinkProps, 'locale'>> &
+type BaseLinkProps = Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  keyof LinkProps
+> &
+  LinkProps
+
+export type AProps = Partial<Omit<BaseLinkProps, 'locale'>> &
   Component.UI<{
     locale?: I18n.Locale
 
