@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="0.93em" viewBox="0 0 31.435 29.47">
+  <g transform="translate(0 0)">
+    <g transform="translate(0 2.21)">
+      <path d="M0,53.719v9.824H13.753V52Z" transform="translate(0 -52)" />
+    </g>
+    <g transform="translate(15.718 0)">
+      <path d="M256,17.965V29.753h15.718V16Z" transform="translate(-256 -16)" />
+    </g>
+    <g transform="translate(15.718 15.718)">
+      <path d="M256,272v11.788l15.718,1.965V272Z" transform="translate(-256 -272)" />
+    </g>
+    <g transform="translate(0 15.718)">
+      <path d="M0,272v9.824l13.753,1.719V272Z" transform="translate(0 -272)" />
+    </g>
+  </g>
+</svg>

@@ -1,2 +1,2 @@
 export * from './domData'
-export * from './mapChildren'
+export * from './nodeChild'

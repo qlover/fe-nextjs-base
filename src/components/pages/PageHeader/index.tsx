@@ -6,7 +6,7 @@ import HeaderNav from './HeaderNav'
 import css from './index.module.less'
 import MobileDrawer from './MobileDrawer'
 
-type PageHeaderProps = {}
+export type PageHeaderProps = {}
 
 const PageHeader: FC<PageHeaderProps> = () => {
   const { headerRef, scrolled, currentNavKey, openDrawer, onChangeOpenDrawer } =

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://localhost:3199
+Host: http://localhost:3198
 
 # Sitemaps
-Sitemap: http://localhost:3199/sitemap.xml
+Sitemap: http://localhost:3198/sitemap.xml

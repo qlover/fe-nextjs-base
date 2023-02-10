@@ -33,7 +33,7 @@ module.exports = {
   /**
    * svg 图标输出目录
    */
-  svgIconOutputPath: join(rootPath, 'src/components/core/Icon/AssetsSvgIcon'),
+  svgIconOutputPath: join(rootPath, 'src/components/common/SvgIcon'),
 
   imgIconAssetsSrcPath,
 

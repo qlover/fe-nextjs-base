@@ -1,0 +1,52 @@
+.layout-horizontal {
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  :global {
+    .figure-cover {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .figure-content {
+      p + p {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media (min-width: theme('screens.md')) {
+  .layout-horizontal {
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+
+    :global {
+      .figure-content {
+        p + p {
+          margin-top: 2rem;
+        }
+      }
+    }
+  }
+}
+.layout-vertical {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: center;
+  // 因为是垂直布局，直接 col
+  flex-direction: column;
+  --column: 1;
+  --space-x: 0;
+  --cell-width: 100%;
+
+  :global {
+    .figure-cover {
+      img {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

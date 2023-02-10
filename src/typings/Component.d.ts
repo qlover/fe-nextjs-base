@@ -79,6 +79,7 @@ declare namespace Component {
     item: T
     index: number
     key: string
+    length: number
     defaultNode?: React.ReactNode
   }
   type MapRenderComponent<T> = (props: MapRenderProps<T>) => React.ReactNode

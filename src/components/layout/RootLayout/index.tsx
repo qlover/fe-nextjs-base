@@ -1,17 +1,25 @@
-import { PageFooter, PageHeader, PageSeo } from '@/components/pages'
+import { PageFooter, PageHeader } from '@/components/pages'
+import { PageHeaderProps } from '@/components/pages/PageHeader'
+import PageSeo from '@/components/pages/PageSeo'
 import { FC } from 'react'
 
-type RootLayoutProps = {}
+type RootLayoutProps = {
+  headerProps?: PageHeaderProps
+} & Component.UI
 
 const RootLayout: FC<Component.WithChildren<RootLayoutProps>> = ({
+  headerProps,
+  className,
   children
 }) => {
   return (
-    <div className="RootLayout-wrapper">
+    <div className={className} data-root="RootLayout">
       <PageSeo />
 
-      <PageHeader />
+      <PageHeader {...headerProps} />
+
       <main>{children}</main>
+
       <PageFooter />
     </div>
   )

@@ -1,4 +1,10 @@
-const { genI18n, genPageRoute, genUITheme, genI18nTransType } = require('../scripts')
+const {
+  genI18n,
+  genPageRoute,
+  genUITheme,
+  genSvgIconComponent,
+  genI18nTransType
+} = require('../scripts')
 const { genIconFontType } = require('../scripts/genIconFontType')
 
 async function main() {
@@ -10,7 +16,9 @@ async function main() {
 
   genI18nTransType()
 
-  genIconFontType();
+  genSvgIconComponent()
+
+  genIconFontType()
 }
 
 main()

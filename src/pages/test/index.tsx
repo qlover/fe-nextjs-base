@@ -1,12 +1,12 @@
 import { A } from '@/components/common'
-import { TestLayout } from '@/components/layout'
+import { PageTest } from '@/components/layout'
 import useI18n from '@/hooks/useI18n'
 import { createRedirect } from '@/utils/common/Redirect'
 import { ServerRenderer } from '@/utils/server/ServerRenderer'
 
 export const getStaticProps = ServerRenderer.ssg({})
 
-const TestAppPropsPage: Page.Component = (props) => {
+export default PageTest(() => {
   const { t, router } = useI18n()
 
   return (
@@ -122,8 +122,4 @@ const TestAppPropsPage: Page.Component = (props) => {
       </div>
     </div>
   )
-}
-
-TestAppPropsPage.Layout = TestLayout
-
-export default TestAppPropsPage
+})

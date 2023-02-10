@@ -1,0 +1,40 @@
+@import '../../../styles/less/tailwind/index.less';
+
+// .m-text-h3 {
+//   @apply opacity-100;
+// }
+
+.figuresection {
+  :global {
+    .figuresection-head {
+      .m-text-h3();
+      padding-bottom: 2.4rem;
+      @apply font-medium;
+    }
+
+    .figure-head {
+      width: 100%;
+    }
+  }
+
+  // 水平排列生效
+  &[data-layout='horizontal'] {
+    :global {
+      .top-cover {
+        order: -1;
+      }
+    }
+  }
+}
+@media (min-width: theme('screens.md')) {
+  .figuresection {
+    // 水平排列生效
+    &[data-layout='horizontal'] {
+      :global {
+        .top-cover {
+          order: initial;
+        }
+      }
+    }
+  }
+}

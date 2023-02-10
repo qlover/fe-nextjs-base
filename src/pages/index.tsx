@@ -13,7 +13,7 @@ const IndexPage: Page.Component = (props) => {
   const [state] = useStores(selectAuthUser)
 
   return (
-    <>
+    <RootLayout>
       <h1>Index Page</h1>
 
       <div className="h-5">
@@ -33,10 +33,8 @@ const IndexPage: Page.Component = (props) => {
           to /test
         </A>
       </div>
-    </>
+    </RootLayout>
   )
 }
-
-IndexPage.Layout = RootLayout
 
 export default IndexPage

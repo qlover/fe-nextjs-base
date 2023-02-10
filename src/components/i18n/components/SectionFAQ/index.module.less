@@ -1,0 +1,63 @@
+.SectionFAQ {
+  margin-bottom: 90px;
+}
+@media (min-width: theme('screens.md')) {
+  .SectionFAQ {
+    margin-bottom: 180px;
+
+    :global {
+      .PageSection-head {
+        padding-top: 180px;
+      }
+    }
+  }
+}
+.faqCollapse {
+  @apply space-y-5 bg-transparent;
+  @px: 20px;
+
+  :global {
+    .ant-collapse-item {
+      @apply border-none;
+      color: #293340;
+      font-size: 2rem;
+      min-height: 6rem;
+      background: #ffffff;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+
+      > .ant-collapse-header {
+        // m-text-24
+        @apply text-18 md:text-24;
+        @apply items-center relative;
+        padding-left: @px;
+        padding-right: @px;
+
+        .ant-collapse-arrow {
+          color: #002fa7;
+        }
+
+        &::after {
+          content: '';
+          @apply transition-opacity duration-300 opacity-0 absolute bottom-0 left-5 right-5 h-px bg-[#D8D8D8];
+        }
+      }
+
+      .ant-collapse-content-box {
+        @apply leading-6;
+        padding-left: @px;
+        padding-right: @px;
+
+        color: #6d7783;
+        font-size: 15px;
+      }
+      > .ant-collapse-content > .ant-collapse-content-box {
+        padding-top: 17px;
+      }
+    }
+    .ant-collapse-item-active {
+      .ant-collapse-header::after {
+        @apply opacity-100;
+      }
+    }
+  }
+}

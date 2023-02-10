@@ -1,3 +1,5 @@
+import workConfig from '@/config/workConfig'
+import { concatPath } from 'maroonlis-utils'
 import type { NextSeoProps } from 'next-seo'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
@@ -27,7 +29,7 @@ export default function usePageSeo(props?: PageSeoProps) {
     if (isCanonical) {
       result.push({
         rel: 'canonical',
-        href: asPath
+        href: concatPath(workConfig.siteURL, asPath)
       })
     }
 

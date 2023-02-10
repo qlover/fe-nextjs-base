@@ -11,3 +11,30 @@
     font-size: 1.6rem;
   }
 }
+
+@layer components {
+  .m-text-14 {
+    @apply text-12 md:text-14;
+  }
+  .m-text-16 {
+    @apply text-14 md:text-16;
+  }
+  .m-text-18 {
+    @apply text-[15px] md:text-18;
+  }
+  .m-text-20 {
+    @apply text-16 md:text-20;
+  }
+  .m-text-24 {
+    @apply text-18 md:text-24;
+  }
+  .m-text-40 {
+    @apply text-26 md:text-40;
+  }
+  .m-text-h1 {
+    @apply text-32 leading-10 md:text-60 md:leading-[80px];
+  }
+  .m-text-h3 {
+    @apply text-20 leading-6 md:text-40 md:leading-[60px];
+  }
+}
