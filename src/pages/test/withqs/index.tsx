@@ -1,4 +1,5 @@
 import { RootLayout } from '@/components/layout'
+import { PageBreadcrumb } from '@/components/pages'
 import { serialize } from '@/utils/common/serialize'
 import { ServerRenderer } from '@/utils/server/ServerRenderer'
 import { useRouter } from 'next/router'
@@ -12,6 +13,7 @@ const TestWithQSPage: Page.Component<TestWithQSPageProps> = (props) => {
 
   return (
     <div>
+      <PageBreadcrumb />
       <h1 className="text-3xl">TestWithQSPage</h1>
 
       <div className="my-3 space-x-4">
