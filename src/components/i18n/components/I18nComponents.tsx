@@ -1,6 +1,6 @@
 import workConfig from '@/config/workConfig'
 import { mapChildren } from '@/utils/client'
-import { clientLog } from '@/utils/common/logger'
+import { logger } from '@/utils/common'
 import React, { FC } from 'react'
 import { DynamicComponentsMap } from '../config/consts'
 import I18nComponentsContainer from '../container'
@@ -44,7 +44,7 @@ const I18nComponents: FC<I18nComponentProps> = ({
 
         if (!DynamicComponentsMap[item.type]) {
           if (workConfig.appEnv !== 'master') {
-            clientLog.error(`not ${item.type} Component!`)
+            logger.error(`not ${item.type} Component!`)
           }
 
           return null

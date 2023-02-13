@@ -1,2 +1,5 @@
 export * from './domData'
 export * from './nodeChild'
+export * from './Storage'
+export { default as Storage } from './Storage'
+export * from './workPath'

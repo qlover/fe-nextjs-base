@@ -12,7 +12,7 @@ export type ServerRendererErrorProps = RedirectProps & {
   options?: ErrorOptions
 }
 
-export default class ServerRendererError
+export class ServerRendererError
   extends Error
   implements ServerRendererErrorInterface
 {

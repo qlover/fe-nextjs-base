@@ -1,4 +1,4 @@
-import { clientLog } from '@/utils/common/logger'
+import { logger } from '@/utils/common'
 import { isNumber, isPlainObject, isString, sortBy } from 'lodash'
 import { I18nComponentsNames, LocalJsonComponentKey } from '../config/consts'
 
@@ -46,12 +46,12 @@ export function getI18nComponents(
         if (isComponentNameType(value.type)) {
           result.push(value)
         } else {
-          clientLog.error(
+          logger.error(
             `"${value.type}" component not found! Register component in config/consts.ts`
           )
         }
       } else {
-        clientLog.error(`${key} not a I18nComponent.Base type!`)
+        logger.error(`${key} not a I18nComponent.Base type!`)
       }
     })
 

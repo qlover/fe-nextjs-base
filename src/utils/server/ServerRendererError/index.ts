@@ -1,1 +1,1 @@
-export { default as ServerRendererError } from './ServerRendererError'
+export * from './ServerRendererError'
