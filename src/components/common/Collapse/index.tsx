@@ -20,7 +20,7 @@ type CollapseProps<T> = Component.WithOptions<T> &
 function Collapse<T>({ options, renderPanel, ...restProps }: CollapseProps<T>) {
   return (
     <AntdCollapse
-      expandIconPosition="right"
+      expandIconPosition="end"
       expandIcon={({ isActive }) => (
         <IconSvgExpand
           className={classNames(
