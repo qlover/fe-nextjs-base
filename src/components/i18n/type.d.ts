@@ -56,8 +56,8 @@ declare namespace I18nComponent {
   }
 
   type ComponentNameType =
-    typeof import('./config/consts').I18nComponentsNames[number]
+    keyof typeof import('./config/consts').DynamicComponentsMap
 
   type DynamicComponentsMapType =
-    typeof import('./dynamic').DynamicComponentsMap
+    typeof import('./config/consts').DynamicComponentsMap
 }

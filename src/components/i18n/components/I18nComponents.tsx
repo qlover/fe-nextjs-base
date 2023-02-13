@@ -2,8 +2,8 @@ import workConfig from '@/config/workConfig'
 import { mapChildren } from '@/utils/client'
 import { clientLog } from '@/utils/common/logger'
 import React, { FC } from 'react'
+import { DynamicComponentsMap } from '../config/consts'
 import I18nComponentsContainer from '../container'
-import { DynamicComponentsMap } from '../dynamic'
 
 interface I18nComponentProps
   extends Component.UI,

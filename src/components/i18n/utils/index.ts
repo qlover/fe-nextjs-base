@@ -1,7 +1,6 @@
-import workConfig from '@/config/workConfig'
 import { clientLog } from '@/utils/common/logger'
-import { isPlainObject, isString, sortBy } from 'lodash'
-import { I18nComponentsNames } from '../config/consts'
+import { isNumber, isPlainObject, isString, sortBy } from 'lodash'
+import { I18nComponentsNames, LocalJsonComponentKey } from '../config/consts'
 
 function isComponentNameType(
   value: unknown
@@ -9,8 +8,24 @@ function isComponentNameType(
   return isString(value) && I18nComponentsNames.includes(value as any)
 }
 
-export function isI18nComponents(value: any): value is I18nComponent.Base {
-  return isPlainObject(value) && isComponentNameType(value.type)
+function isKey(val: any): val is string | number {
+  return isString(val) || isNumber(val)
+}
+
+/**
+ * 是否是 I18nComponent.Base 类型
+ *
+ * @param value
+ * @returns
+ */
+export function isI18nComponentBaseType(
+  value: any
+): value is I18nComponent.Base {
+  return isPlainObject(value) && isKey(value.key) && isString(value.type)
+}
+
+function isI18nComponentNameKey(value: string) {
+  return value.startsWith(LocalJsonComponentKey)
 }
 
 export function getI18nComponents(
@@ -23,20 +38,22 @@ export function getI18nComponents(
   }
   const result = [] as I18nComponent.Base[]
 
-  Object.keys(values).forEach((key) => {
-    const value = values[key]
-    if (isPlainObject(value)) {
-      if (isComponentNameType(value.type)) {
-        result.push(value)
-      } else {
-        if (workConfig.appEnv !== 'master') {
+  Object.keys(values)
+    .filter(isI18nComponentNameKey)
+    .forEach((key) => {
+      const value = values[key]
+      if (isI18nComponentBaseType(value)) {
+        if (isComponentNameType(value.type)) {
+          result.push(value)
+        } else {
           clientLog.error(
-            `locales/${lang}/${i18Ns}.json .${key} not I18nComponents! Register  component name in ../config/consts.ts `
+            `"${value.type}" component not found! Register component in config/consts.ts`
           )
         }
+      } else {
+        clientLog.error(`${key} not a I18nComponent.Base type!`)
       }
-    }
-  })
+    })
 
   return sortBy(result, 'sort')
 }

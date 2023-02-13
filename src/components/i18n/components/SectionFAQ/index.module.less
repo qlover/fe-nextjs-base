@@ -1,16 +1,7 @@
-.SectionFAQ {
-  margin-bottom: 90px;
-}
-@media (min-width: theme('screens.md')) {
-  .SectionFAQ {
-    margin-bottom: 180px;
+@import '../../../../styles/less/tailwind/componeonts.less';
 
-    :global {
-      .PageSection-head {
-        padding-top: 180px;
-      }
-    }
-  }
+.SectionFAQ {
+  margin-bottom: 3rem;
 }
 .faqCollapse {
   @apply space-y-5 bg-transparent;
@@ -26,8 +17,7 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
       > .ant-collapse-header {
-        // m-text-24
-        @apply text-18 md:text-24;
+        .m-text-24();
         @apply items-center relative;
         padding-left: @px;
         padding-right: @px;

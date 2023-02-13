@@ -1,58 +1,60 @@
-const CURRENT_LEVEL = 'DEBUG'
+// const CURRENT_LEVEL = 'DEBUG'
 
-const LEVELS = {
-  ERROR: 1,
-  WARN: 2,
-  INFO: 3,
-  DEBUG: 4
-}
+import { logger } from 'maroonlis-utils'
 
-const print = (level: keyof typeof LEVELS, args: any[]) => {
-  // check log level
-  if (LEVELS[CURRENT_LEVEL] < LEVELS[level]) {
-    return
-  }
+// const LEVELS = {
+//   ERROR: 1,
+//   WARN: 2,
+//   INFO: 3,
+//   DEBUG: 4
+// }
 
-  if (!args || args.length === 0 || !args[0]) {
-    return
-  }
+// const print = (level: keyof typeof LEVELS, args: any[]) => {
+//   // check log level
+//   if (LEVELS[CURRENT_LEVEL] < LEVELS[level]) {
+//     return
+//   }
 
-  // @ts-expect-error
-  console[level.toLocaleLowerCase()](new Date().toLocaleString(), ...args)
-}
+//   if (!args || args.length === 0 || !args[0]) {
+//     return
+//   }
+
+//   // @ts-expect-error
+//   console[level.toLocaleLowerCase()](new Date().toLocaleString(), ...args)
+// }
 
 const clientLog = {
   debug(...args: any[]) {
-    print('DEBUG', ['[client]', ...args])
+    logger.debug('[client]', ...args)
   },
 
   info(...args: any[]) {
-    print('INFO', ['[client]', ...args])
+    logger.info('[client]', ...args)
   },
 
   warn(...args: any[]) {
-    print('WARN', ['[client]', ...args])
+    logger.warn('[client]', ...args)
   },
 
   error(...args: any[]) {
-    print('ERROR', ['[client]', ...args])
+    logger.error('[client]', ...args)
   }
 }
 const serverLog = {
   debug(...args: any[]) {
-    print('DEBUG', ['[server]', ...args])
+    logger.debug('[server]', ...args)
   },
 
   info(...args: any[]) {
-    print('INFO', ['[server]', ...args])
+    logger.info('[server]', ...args)
   },
 
   warn(...args: any[]) {
-    print('WARN', ['[server]', ...args])
+    logger.warn('[server]', ...args)
   },
 
   error(...args: any[]) {
-    print('ERROR', ['[server]', ...args])
+    logger.error('[server]', ...args)
   }
 }
 
