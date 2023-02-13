@@ -1,10 +1,10 @@
-import { AppPropsContainer } from '@/components/container'
 import { getI18nComponents } from '@/components/i18n/utils'
 import { useMemo } from 'react'
 import useI18n from './useI18n'
+import useI18nNamespace from './useI18nNamespace'
 
 type UseI18nComponentProps = {
-  dataSources?: Page.BaseProps['__namespaces']
+  dataSources?: Page.I18nNamespaceType
   i18nNS?: I18n.I18nNS
 }
 
@@ -18,16 +18,13 @@ export default function useI18nComponents({
   i18nNS,
   dataSources
 }: UseI18nComponentProps = {}) {
-  const i18n = useI18n(i18nNS)
-
-  const { i18Ns, lang, router } = i18n
-  const { pageProps } = AppPropsContainer.useContainer()
+  const { i18Ns, lang } = useI18n(i18nNS)
+  const sources = useI18nNamespace(i18nNS ? [i18nNS] : i18nNS)
 
   const components = useMemo(() => {
-    const sources = dataSources || pageProps().__namespaces || {}
-    const values = sources[i18Ns]
+    const values = (dataSources || sources)[i18Ns]
     return getI18nComponents(lang, i18Ns, values)
-  }, [lang, i18Ns, router.pathname])
+  }, [sources])
 
-  return { components, ...i18n }
+  return { components }
 }
