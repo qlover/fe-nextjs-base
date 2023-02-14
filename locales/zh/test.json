@@ -2,5 +2,75 @@
   "$seo_title": "zh:test SEO Title",
   "$seo_desc": "zh:test SEO desc",
   "$seo_keywords": "zh:test SEO keywords",
-  "test_pagetitle": "测试页面"
+  "test_pagetitle": "测试页面",
+  "i18n_component_faq": {
+    "key": "FAQ",
+    "type": "SectionFAQ",
+    "sort": 4,
+    "props": {
+      "title": "Frequently asked questions",
+      "options": [
+        {
+          "key": "faq-1",
+          "title": "What is a VPN and how does it work?",
+          "description": "A VPN is a virtual private network that allows users to securely access the internet by encrypting their online traffic and hiding their IP address. It works by creating a secure and encrypted connection from your device to the VPN server, which then forwards your internet traffic to its final destination."
+        },
+        {
+          "key": "faq-2",
+          "title": "Is using MarsVPN safe and secure?",
+          "description": "Yes, using MarsVPN can provide a high level of online security and privacy, especially when using a reputable and trustworthy VPN provider. MarsVPN encrypts your online traffic, making it difficult for hackers and others to intercept and steal your personal information."
+        },
+        {
+          "key": "faq-3",
+          "title": "Can I use MarsVPN to access geo-restricted content while traveling?",
+          "description": "Yes, by using MarsVPN, you can access websites and content that may be restricted in the country you are traveling to by appearing to be accessing the internet from a different location. However, it is important to note that not all VPN providers work in all countries and some services may be blocked by firewalls or other internet censorship measures."
+        },
+        {
+          "key": "faq-4",
+          "title": "Can I use MarsVPN on multiple devices?",
+          "description": "Yes, MarsVPN offer multi-device support, allowing you to use a single VPN account on multiple devices, such as computers, smartphones, and tablets."
+        },
+        {
+          "key": "faq-5",
+          "title": "Does  MarsVPN keep logs of my online activity?",
+          "description": "MarsVPN will never record your logs"
+        }
+      ]
+    }
+  },
+  "i18n_component_faq2": {
+    "key": "FAQ2",
+    "type": "SectionFAQ",
+    "sort": 2,
+    "props": {
+      "title": "Frequently asked questions",
+      "options": [
+        {
+          "key": "faq-1",
+          "title": "What is a VPN and how does it work?",
+          "description": "A VPN is a virtual private network that allows users to securely access the internet by encrypting their online traffic and hiding their IP address. It works by creating a secure and encrypted connection from your device to the VPN server, which then forwards your internet traffic to its final destination."
+        },
+        {
+          "key": "faq-2",
+          "title": "Is using MarsVPN safe and secure?",
+          "description": "Yes, using MarsVPN can provide a high level of online security and privacy, especially when using a reputable and trustworthy VPN provider. MarsVPN encrypts your online traffic, making it difficult for hackers and others to intercept and steal your personal information."
+        },
+        {
+          "key": "faq-3",
+          "title": "Can I use MarsVPN to access geo-restricted content while traveling?",
+          "description": "Yes, by using MarsVPN, you can access websites and content that may be restricted in the country you are traveling to by appearing to be accessing the internet from a different location. However, it is important to note that not all VPN providers work in all countries and some services may be blocked by firewalls or other internet censorship measures."
+        },
+        {
+          "key": "faq-4",
+          "title": "Can I use MarsVPN on multiple devices?",
+          "description": "Yes, MarsVPN offer multi-device support, allowing you to use a single VPN account on multiple devices, such as computers, smartphones, and tablets."
+        },
+        {
+          "key": "faq-5",
+          "title": "Does  MarsVPN keep logs of my online activity?",
+          "description": "MarsVPN will never record your logs"
+        }
+      ]
+    }
+  }
 }

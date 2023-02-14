@@ -8,6 +8,7 @@ const {
   preLocalesRootPath
 } = require('../util')
 const seoConfig = require('../config/seoConfig.json')
+const { union } = require('lodash')
 
 function genTpl(locales, pathname, nss) {
   return `// 对应 i18n.js 配置类型
@@ -57,7 +58,7 @@ async function genI18n() {
     })
     .sort()
 
-  const nss = Object.values(i18n.pages).flat().sort()
+  const nss = union(Object.values(i18n.pages).flat().sort())
 
   // 生成 类型
   const i18ndtsPath = join(preTypingsRootPath(), 'I18n.d.ts')

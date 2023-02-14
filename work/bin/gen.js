@@ -6,28 +6,40 @@ const {
   genI18nTransType
 } = require('../scripts')
 const { genIconFontType } = require('../scripts/genIconFontType')
-const { generatorJSON } = require('../lib/markdown/generator')
+const { generatorEvery, generatorGroup } = require('../lib/markdown/generator')
 const { workRootPath } = require('../config/path.config')
 const { join } = require('path')
 const { prePath } = require('../util')
 
 async function main() {
-  await genI18n()
+  // await genI18n()
 
-  genPageRoute()
+  // genPageRoute()
 
-  genUITheme()
+  // genUITheme()
 
-  genI18nTransType()
+  // genI18nTransType()
 
-  genSvgIconComponent()
+  // genSvgIconComponent()
 
-  genIconFontType()
+  // genIconFontType()
 
   // md to json
-  const contentRoot = prePath(join(workRootPath, 'sources/doc/markdown'))
-  const outputRoot = prePath(join(workRootPath, 'sources/mdJson'))
-  generatorJSON(contentRoot, outputRoot)
+  generatorEvery(
+    prePath(join(workRootPath, 'sources/doc/markdown')),
+    prePath(join(workRootPath, 'sources/mdJson'))
+  )
+
+  generatorGroup(
+    join(workRootPath, 'sources/doc/markdown/posts'),
+    join(workRootPath, 'sources/mdJson/posts.json')
+  )
+
+  // supportmd to json
+  generatorGroup(
+    prePath(join(workRootPath, 'sources/doc/markdown/support')),
+    join(workRootPath, 'sources/mdJson/support.json')
+  )
 }
 
 main()

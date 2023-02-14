@@ -18,6 +18,7 @@ module.exports = {
     // 单独页面
     '/': ['index'],
 
-    'rgx:^/test': ['test']
+    'rgx:^/test': ['test'],
+    'rgx:^/support': ['support']
   }
 }

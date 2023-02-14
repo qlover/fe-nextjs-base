@@ -1,40 +1,62 @@
-const { readdirSync, statSync, writeFileSync } = require('fs')
+const { readdirSync, writeFileSync } = require('fs')
 const { join, resolve } = require('path')
 const { readMDFileSync } = require('./_util')
 
 /**
- * md 内容生成 json 内容
- *
+ * 生成一组
  * @param {*} contentRoot
  * @param {*} outputRoot
  */
-function generatorJSON(contentRoot, outputRoot) {
+function generatorGroup(contentRoot, outputRoot) {
+  console.log('generatorGroup', contentRoot, outputRoot)
+  const subFiles = readdirSync(contentRoot)
+  const mdResults = subFiles.filter(isMDExt).map((filename) => {
+    const mdFilePath = resolve(join(contentRoot, filename))
+    try {
+      return readMDFileSync(mdFilePath)
+    } catch (e) {
+      console.log(`[error] ${mdFilePath}`)
+      return {
+        errorKey: filename,
+        e
+      }
+    }
+  })
+
+  writeFileSync(outputRoot, JSON.stringify(mdResults), 'utf-8')
+  console.log(`[success] ${outputRoot}`)
+}
+
+/**
+ * 生成单个json
+ * @param {*} contentRoot
+ * @param {*} outputRoot
+ */
+function generatorEvery(contentRoot, outputRoot) {
   const files = readdirSync(contentRoot)
 
-  files.forEach((filename) => {
+  files.filter(isMDExt).forEach((filename) => {
     const filePath = resolve(join(contentRoot, filename))
+    const mdresult = readMDFileSync(filePath)
+    const writePath = resolve(
+      join(outputRoot, filename.split('.').shift() + '.json')
+    )
 
-    if (statSync(filePath).isDirectory()) {
-      const subFiles = readdirSync(filePath)
-      const mdResults = subFiles.map((filename) => {
-        const mdFilePath = resolve(join(filePath, filename))
-        return readMDFileSync(mdFilePath)
-      })
-
-      const writePath = resolve(join(outputRoot, filename + '.json'))
-      writeFileSync(writePath, JSON.stringify(mdResults), 'utf-8')
-      console.log(`success: ${writePath}`)
-    } else {
-      if (filename.split('.').pop() === 'md') {
-        const mdresult = readMDFileSync(filePath)
-        const writePath = resolve(
-          join(outputRoot, filename.split('.').shift() + '.json')
-        )
-        writeFileSync(writePath, JSON.stringify(mdresult), 'utf-8')
-        console.log(`success: ${writePath}`)
+    try {
+      writeFileSync(writePath, JSON.stringify(mdresult), 'utf-8')
+      console.log(`[success] ${writePath}`)
+    } catch (e) {
+      console.log(`[error] ${writePath}`)
+      return {
+        errorKey: filename,
+        e
       }
     }
   })
 }
 
-module.exports = { generatorJSON }
+function isMDExt(name) {
+  return name.split('.').pop() === 'md'
+}
+
+module.exports = { generatorEvery, generatorGroup }
