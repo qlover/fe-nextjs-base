@@ -1,7 +1,7 @@
-require('./server/bin/initProject')
+require('./work/bin/initProject')
 const nextTranslate = require('next-translate')
 const withLess = require('next-with-less')
-const { serverNextConfig } = require('./server/config')
+const { serverNextConfig } = require('./work/config/next')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'

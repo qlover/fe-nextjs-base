@@ -19,8 +19,8 @@ const appConfig = {
     /**
      * 默认是否使用本地化语言
      */
-    localeDetection: false,
+    localeDetection: false
   }
 }
 
-module.exports = { appConfig }
+module.exports = appConfig

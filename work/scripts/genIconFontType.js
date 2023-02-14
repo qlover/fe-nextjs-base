@@ -1,17 +1,17 @@
-const { default: axios } = require('axios');
-const { writeFileSync } = require('fs');
-const { join } = require('path');
-const { rootPath } = require('../config/path.config');
+const { default: axios } = require('axios')
+const { writeFileSync } = require('fs')
+const { join } = require('path')
+const { rootPath } = require('../config/path.config')
 const { prePath } = require('../util/prePath')
-const iconFontJson = require('../../src/config/share/iconFont.json')
-const classNamesReg = /(\.?([a-zA-Z0-9-])+(:before))/g;
+const classNamesReg = /(\.?([a-zA-Z0-9-])+(:before))/g
+const iconFontJson = require('../config/iconFont.json')
 
 function createIconFont(types) {
   const iconFontPath = prePath(join(rootPath, 'src/components/common/IconFont'))
   const indexPath = join(iconFontPath, 'index.tsx')
   writeFileSync(
     indexPath,
-    `import iconFontJson from '@/config/share/iconFont.json';
+    `import iconFontJson from 'work/config/iconFont.json';
 import { createFromIconfontCN } from '@ant-design/icons';
 
 export type IconFontType = ${types};
@@ -25,27 +25,26 @@ const IconFont = createFromIconfontCN<IconFontType>({
 
 export default IconFont;
 `
-  );
+  )
 
   return indexPath
 }
 
 function genIconFontType(params) {
-
   axios(iconFontJson.css).then((cssText) => {
-    const cssTextStr = cssText.data;
+    const cssTextStr = cssText.data
     if (typeof cssTextStr === 'string') {
       const iconTypes = cssTextStr
         .match(classNamesReg)
         .map((className) => {
-          return "'" + className.replace('.', '').replace(':before', '') + "'";
+          return "'" + className.replace('.', '').replace(':before', '') + "'"
         })
-        .join(' | ');
-      const indexPath = createIconFont(iconTypes);
+        .join(' | ')
+      const indexPath = createIconFont(iconTypes)
 
-      console.log('[genIconFontType] success', indexPath);
+      console.log('[genIconFontType] success', indexPath)
     }
-  });
+  })
 }
 
 module.exports = { genIconFontType }

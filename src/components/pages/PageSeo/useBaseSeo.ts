@@ -1,6 +1,6 @@
-import seoConfig from '@/config/share/seoConfig.json'
 import useI18n from '@/hooks/useI18n'
 import { useMemo } from 'react'
+import seoConfig from 'work/config/seoConfig.json'
 
 import type { PageSeoProps } from '.'
 

@@ -1,4 +1,4 @@
-const { appConfig } = require('../app.config')
+const appConfig = require('../app.config')
 
 /**
  * nextjs 自定义路由重定向路由表

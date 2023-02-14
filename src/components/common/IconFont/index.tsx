@@ -1,4 +1,4 @@
-import iconFontJson from '@/config/share/iconFont.json';
+import iconFontJson from 'work/config/iconFont.json';
 import { createFromIconfontCN } from '@ant-design/icons';
 
 export type IconFontType = 'icon-windows' | 'icon-android' | 'icon-29mac' | 'icon-expand' | 'icon-close' | 'icon-menu' | 'icon-shuizhu' | 'icon-mac';

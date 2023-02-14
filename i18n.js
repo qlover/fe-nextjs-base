@@ -1,7 +1,6 @@
-const { appConfig } = require('./server/config')
+const appConfig = require('./work/config/app.config')
 
 module.exports = {
-
   ...appConfig.i18n,
 
   /**

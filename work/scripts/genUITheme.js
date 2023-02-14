@@ -1,6 +1,6 @@
 const { join } = require('path')
 const { preTypingsRootPath, arrayToTypes } = require('../util')
-const { UIThemeMode } = require('../config')
+const { UIThemeMode } = require('../config/ui.config')
 const { writeFileSync } = require('fs')
 
 function typedFile(types) {
