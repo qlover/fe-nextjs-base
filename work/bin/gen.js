@@ -12,17 +12,17 @@ const { join } = require('path')
 const { prePath } = require('../util')
 
 async function main() {
-  // await genI18n()
+  await genI18n()
 
-  // genPageRoute()
+  genPageRoute()
 
-  // genUITheme()
+  genUITheme()
 
-  // genI18nTransType()
+  genI18nTransType()
 
-  // genSvgIconComponent()
+  genSvgIconComponent()
 
-  // genIconFontType()
+  genIconFontType()
 
   // md to json
   generatorEvery(
