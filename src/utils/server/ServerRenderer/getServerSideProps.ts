@@ -1,3 +1,4 @@
+import { logger } from '@/utils/common'
 import type {
   GetServerSidePropsContext,
   GetServerSidePropsResult
@@ -5,6 +6,7 @@ import type {
 import type { BaseConfigType } from '.'
 import { prepareForSerializatoin } from '../prepareForSerializatoin'
 import { ServerRendererError } from '../ServerRendererError'
+import ServerRendererConfig from './config'
 
 type HandlerType<Props> = (
   context: GetServerSidePropsContext
@@ -57,23 +59,27 @@ async function wrapperHandler<P extends PlainObject>(
 export default function getServerSideProps<P extends PlainObject>(
   config: BaseConfigType<HandlerType<P>> = {}
 ) {
-  const { catchError = true } = config
+  const { catchError = ServerRendererConfig.catchError } = config
 
   return async function getServerSideProps(context: GetServerSidePropsContext) {
     try {
       return await wrapperHandler<P>(context, config)
     } catch (e) {
-      if (catchError) {
-        if (e instanceof ServerRendererError) {
-          return e.redirect({ locale: context.locale as I18n.Locale })
-        }
+      logger.error('[getServerSideProps]', e)
 
-        return new ServerRendererError({
-          locale: context.locale as I18n.Locale,
-          pathname: '/500',
-          message: String(e)
-        }).redirect()
+      if (!catchError) {
+        throw e
       }
+
+      if (e instanceof ServerRendererError) {
+        return e.redirect({ locale: context.locale as I18n.Locale })
+      }
+
+      return new ServerRendererError({
+        locale: context.locale as I18n.Locale,
+        pathname: '/500',
+        message: String(e)
+      }).redirect()
     }
   }
 }

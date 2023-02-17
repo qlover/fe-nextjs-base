@@ -38,4 +38,28 @@ declare namespace Page {
      */
     getLayoutProps?: () => any
   }
+
+  type MarkdownBaseProps = {
+    markdown: {
+      uid: string
+      /**
+       * 用于 MDXRemote 组件
+       */
+      mdxContext: any
+
+      /**
+       * md 字符串
+       */
+      content: string
+
+      /**
+       * md 元数据
+       */
+      meta: {
+        description: string
+        title: string
+        [key: string]: any
+      }
+    }
+  }
 }

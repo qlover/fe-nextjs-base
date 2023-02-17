@@ -12,12 +12,12 @@ export default function useBaseSeo(props?: PageSeoProps) {
 
   const seoResult = useMemo(() => {
     return {
-      title: t(localeSeoTitleKey as any) || title || seoConfig.title,
+      title: title || t(localeSeoTitleKey as any) || seoConfig.title,
       description:
-        t(localeSeoDescKey as any) || description || seoConfig.description,
-      keywords: t(localeSeoKeywordKey as any) || keywords || seoConfig.keywords
+        description || t(localeSeoDescKey as any) || seoConfig.description,
+      keywords: keywords || t(localeSeoKeywordKey as any) || seoConfig.keywords
     }
-  }, [locale])
+  }, [locale, title, description, keywords])
 
   return seoResult
 }

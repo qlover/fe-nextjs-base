@@ -1,19 +1,16 @@
-import { Fragment } from 'react'
+import { DefaultMarkdownPage } from '@/components/pages'
 import RootLayout from '../RootLayout'
 import TestLayout from '../TestLayout'
 
 export function PageComponent<P>(Component: Page.Component<P>) {
-  if (!Component.Layout) {
-    Component.Layout = Fragment
-  }
-
-  const Layout = Component.Layout
-
   const InnerPage: Page.Component<P> = (props) => {
+    if (!Component.Layout) {
+      return <Component {...props} />
+    }
     return (
-      <Layout {...props}>
+      <Component.Layout {...props}>
         <Component {...props} />
-      </Layout>
+      </Component.Layout>
     )
   }
 
@@ -41,4 +38,14 @@ export function PageTest<P>(Component: Page.Component<P>) {
   }
 
   return PageComponent(Component)
+}
+
+export function PageMarkdown<P>(
+  Component?: Page.Component<P & Page.MarkdownBaseProps>
+) {
+  if (Component) {
+    return PageComponent(Component)
+  }
+
+  return DefaultMarkdownPage
 }

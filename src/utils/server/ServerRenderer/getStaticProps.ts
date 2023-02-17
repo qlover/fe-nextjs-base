@@ -1,12 +1,13 @@
+import { logger } from '@/utils/common'
 import { isNumber } from 'lodash'
 import type {
   GetStaticProps,
   GetStaticPropsContext,
   GetStaticPropsResult
 } from 'next/types'
-import type { BaseConfigType } from '.'
+import { BaseConfigType, ServerRendererError } from '.'
 import { prepareForSerializatoin } from '../prepareForSerializatoin'
-import { ServerRendererError } from '../ServerRendererError'
+import ServerRendererConfig from './config'
 
 type StaticConfigType<P> = BaseConfigType<HandlerType<P>> & {
   /**
@@ -55,11 +56,11 @@ async function wrapperHandler<P extends PlainObject = PlainObject>(
 
     const props = await config.handler(context)
     if (props && isNextResult<P>(props)) {
-      result = { ...result, ...props }
+      result = props
+    } else {
+      // @ts-expect-error
+      result.props = { ...result.props, ...props }
     }
-
-    // @ts-expect-error
-    result.props = { ...result.props, ...props }
   } else {
     result.revalidate = isNumber(config.revalidate) ? config.revalidate : false
   }
@@ -85,11 +86,17 @@ async function wrapperHandler<P extends PlainObject = PlainObject>(
 export default function getStaticProps<P extends PlainObject = PlainObject>(
   config: StaticConfigType<P> = {}
 ) {
+  const { catchError = ServerRendererConfig.catchError } = config
+
   const getStaticProps: GetStaticProps<P> = async (context) => {
     try {
       return await wrapperHandler<P>(context, config)
     } catch (e) {
-      console.log('[RenderDispatch getStaticProps error]', e)
+      logger.error('[getStaticProps]', e)
+
+      if (!catchError) {
+        throw e
+      }
 
       if (e instanceof ServerRendererError) {
         return e.redirect({ locale: context.locale as I18n.Locale })

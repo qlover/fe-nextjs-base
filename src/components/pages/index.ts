@@ -1,3 +1,4 @@
+export { default as DefaultMarkdownPage } from './DefaultMarkdownPage'
 export { default as MakerDown } from './MakerDown'
 export { default as PageBreadcrumb } from './PageBreadcrumb'
 export { default as PageFooter } from './PageFooter'

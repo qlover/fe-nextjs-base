@@ -1,5 +1,6 @@
 const { readFileSync } = require('fs')
 const matter = require('gray-matter')
+const { join } = require('path')
 
 /**
  * 读取 md 文件
