@@ -4,6 +4,7 @@ const { genUITheme } = require('./genUITheme')
 const { genI18nTransType } = require('./genI18nTransType')
 const { fixI18n } = require('./fixI18n')
 const { genSvgIconComponent } = require('./genSvgIconComponent')
+const { listenIp } = require('./listenIp')
 
 module.exports = {
   genI18n,
@@ -11,5 +12,6 @@ module.exports = {
   genUITheme,
   genSvgIconComponent,
   genI18nTransType,
-  fixI18n
+  fixI18n,
+  listenIp
 }
