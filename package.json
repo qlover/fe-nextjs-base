@@ -16,7 +16,7 @@
     "lint": "next lint",
     "next:start": "next start -p 3199",
     "release": "release-it",
-    "start": "node ./work/bin/runDev.js -p 3189",
+    "start": "next dev -p 3189",
     "postbuild": "next-sitemap"
   },
   "dependencies": {
