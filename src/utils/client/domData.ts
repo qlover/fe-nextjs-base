@@ -16,3 +16,12 @@ export function domDataCompoent(name: Function | string) {
 export function domDataLanguage(locale: string) {
   return { 'data-language': locale }
 }
+
+export function domStopEvent(e: any) {
+  e.stopPropagation()
+  e.preventDefault()
+}
+
+export function genMailto(email: string) {
+  return `mailto:${email}`
+}
