@@ -1,6 +1,7 @@
 import { A } from '@/components/common'
 import { RootLayout } from '@/components/layout'
 import { Button } from '@/components/UITheme'
+import { PageRoute } from '@/config/PageRoute'
 import useStores from '@/hooks/useStores'
 import { useUITheme } from '@/hooks/useUITheme'
 import { selectAuthUser } from '@/stores/slice'
@@ -27,7 +28,7 @@ const IndexPage: Page.Component = (props) => {
 
       <div className="my-3">
         <A
-          href="/test"
+          href={PageRoute.test}
           className="text-blue-400 hover:underline hover:text-blue-500"
         >
           to /test

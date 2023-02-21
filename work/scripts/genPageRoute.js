@@ -1,11 +1,26 @@
 // 生成所有非动态路由 pathname
-const { readdirSync, statSync, writeFileSync } = require('fs')
+const {
+  readdirSync,
+  statSync,
+  writeFileSync,
+  readFileSync,
+  existsSync
+} = require('fs')
+const { isPlainObject } = require('lodash')
+const { firstCaseUpper } = require('maroonlis-utils')
 const { join } = require('path')
+const { srcRootPath } = require('../config/path.config')
 const {
   prePagesRootPath,
   preTypingsRootPath,
-  arrayToTypes
+  arrayToTypes,
+  prePath,
+  isFileAsync
 } = require('../util')
+const {
+  replacePlainObject,
+  replaceJSExpressionsPlainObject
+} = require('../util/replacer')
 
 const exts = ['jsx', 'tsx', 'md', 'mdx'].join('|')
 const pageReg = new RegExp(`\.(${exts})$`)
@@ -55,13 +70,54 @@ function genPageRoute() {
     })
 
   const staticPagePath = subPages.filter((path) => !dynPage.test(path))
-  const filePath = join(preTypingsRootPath(), 'PageRoute.d.ts')
+
+  // 生成 PageRoute 类型
+  let filePath = join(preTypingsRootPath(), 'PageRoute.d.ts')
   writeFileSync(
     filePath,
     typedFile(arrayToTypes(subPages), arrayToTypes(staticPagePath))
   )
-
   console.log('[PageRoute.d.ts success]', filePath)
+
+  // 生成 PageRoute 配置
+  const pathnames = toPathObject(subPages)
+  const pathnamesContent = JSON.stringify(pathnames, null, 2)
+
+  filePath = join(prePath(join(srcRootPath, 'config')), 'PageRoute.ts')
+  let lastContent
+  if (existsSync(filePath)) {
+    lastContent = readFileSync(filePath, 'utf-8')
+  }
+
+  writeFileSync(
+    filePath,
+    lastContent
+      ? replaceJSExpressionsPlainObject(lastContent, 'PageRoute', pathnames)
+      : `\nexport const PageRoute = ${pathnamesContent}\n`
+  )
+
+  console.log('[PageRoute.ts success]', filePath)
+}
+
+function toPathObject(routes) {
+  const result = {}
+  routes.forEach((route) => {
+    result[routeToName(route)] = route
+  })
+  return result
+}
+
+function routeToName(route) {
+  if (route === '/') {
+    return 'root'
+  }
+  return route
+    .split('/')
+    .filter(Boolean)
+    .map((slug, index) => {
+      return index > 0 ? firstCaseUpper(slug) : slug
+    })
+    .join('')
 }
 
 /**

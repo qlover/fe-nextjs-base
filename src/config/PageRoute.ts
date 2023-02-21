@@ -1,0 +1,25 @@
+
+export const PageRoute = {
+  "404": "/404",
+  "500": "/500",
+  "root": "/",
+  "support": "/support",
+  "support[slug]": "/support/[slug]",
+  "testCacheState": "/test/cacheState",
+  "testDynamic[slug]": "/test/dynamic/[slug]",
+  "testEmpty": "/test/empty",
+  "testI18nCom": "/test/i18nCom",
+  "test": "/test",
+  "testMarkdownGroup": "/test/markdown/group",
+  "testMarkdownGroup[slug]": "/test/markdown/group/[slug]",
+  "testMarkdownSingle": "/test/markdown/single",
+  "testMarkdownStatic": "/test/markdown/static",
+  "testMarkdown[slug]": "/test/markdown/[slug]",
+  "testService": "/test/service",
+  "testSrenderError1": "/test/srender/error1",
+  "testSrenderError2": "/test/srender/error2",
+  "testSrender": "/test/srender",
+  "testStorage": "/test/storage",
+  "testStore": "/test/store",
+  "testWithqs": "/test/withqs"
+}
