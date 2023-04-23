@@ -10,7 +10,7 @@ const { readMDFileSync } = require('./_util')
 function generatorGroup(contentRoot, outputRoot) {
   console.log('generatorGroup', contentRoot, outputRoot)
   const subFiles = readdirSync(contentRoot)
-  const mdResults = subFiles.filter(isMDExt).map((filename) => {
+  const mdResults = subFiles.filter(isMDXExt).map((filename) => {
     const mdFilePath = resolve(join(contentRoot, filename))
     try {
       return readMDFileSync(mdFilePath)
@@ -35,7 +35,7 @@ function generatorGroup(contentRoot, outputRoot) {
 function generatorEvery(contentRoot, outputRoot) {
   const files = readdirSync(contentRoot)
 
-  files.filter(isMDExt).forEach((filename) => {
+  files.filter(isMDXExt).forEach((filename) => {
     const filePath = resolve(join(contentRoot, filename))
     const mdresult = readMDFileSync(filePath)
     const writePath = resolve(
@@ -55,8 +55,9 @@ function generatorEvery(contentRoot, outputRoot) {
   })
 }
 
-function isMDExt(name) {
-  return name.split('.').pop() === 'md'
+function isMDXExt(name) {
+  const extname = name.split('.').pop()
+  return extname === 'md' || extname === 'mdx'
 }
 
 module.exports = { generatorEvery, generatorGroup }
