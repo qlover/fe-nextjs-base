@@ -68,7 +68,7 @@ const pageRootPath = join(srcRootPath, 'pages')
 /**
  * !!! 相对根目录的 md 页面存放位置，主要用于 nextjs page 生成 md 使用
  */
-const markdownSourcePath = 'work/sources/doc/markdown'
+const markdownSourcePath = 'work/sources/markdown'
 
 module.exports = {
   rootPath,

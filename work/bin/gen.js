@@ -10,6 +10,7 @@ const { generatorEvery, generatorGroup } = require('../lib/markdown/generator')
 const { workRootPath } = require('../config/path.config')
 const { join } = require('path')
 const { prePath } = require('../util')
+const { mdContentRoot, jsonOutputRoot } = require('../lib/markdown/config')
 
 async function main() {
   await genI18n()
@@ -25,20 +26,17 @@ async function main() {
   genIconFontType()
 
   // md to json
-  generatorEvery(
-    prePath(join(workRootPath, 'sources/doc/markdown')),
-    prePath(join(workRootPath, 'sources/mdJson'))
-  )
+  generatorEvery(prePath(mdContentRoot), prePath(jsonOutputRoot))
 
   generatorGroup(
-    join(workRootPath, 'sources/doc/markdown/posts'),
-    join(workRootPath, 'sources/mdJson/posts.json')
+    join(mdContentRoot, 'posts'),
+    join(jsonOutputRoot, 'posts.json')
   )
 
   // supportmd to json
   generatorGroup(
-    prePath(join(workRootPath, 'sources/doc/markdown/support')),
-    join(workRootPath, 'sources/mdJson/support.json')
+    prePath(join(mdContentRoot, 'support')),
+    join(jsonOutputRoot, 'support.json')
   )
 }
 

@@ -6,6 +6,7 @@ export const PageRoute = {
   "support": "/support",
   "support[slug]": "/support/[slug]",
   "testCacheState": "/test/cacheState",
+  "testComponent": "/test/component",
   "testDynamic[slug]": "/test/dynamic/[slug]",
   "testEmpty": "/test/empty",
   "testI18nCom": "/test/i18nCom",
