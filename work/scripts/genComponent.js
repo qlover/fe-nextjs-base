@@ -1,4 +1,4 @@
-const { writeFileSync } = require('fs')
+const { writeFileSync, existsSync } = require('fs')
 const { join } = require('path')
 const { componentRoot } = require('../config/path.config')
 const { prePath, readFileWithString } = require('../util')
