@@ -94,5 +94,22 @@
       "",
       "export default $1;"
     ]
+  },
+
+  "lis_hookcom": {
+    "prefix": "lis_hookcom",
+    "body": [
+      "type $1Props = {};",
+      "",
+      "/**",
+      " * ",
+      " * @param props ",
+      " * @returns ",
+      " */",
+      "export default function $1(props: $1Props) {",
+      "  return <div></div>;",
+      "}",
+      ""
+    ]
   }
 }

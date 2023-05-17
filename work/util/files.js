@@ -99,8 +99,8 @@ function delDir(path) {
 
 /**
  * 排序 json 文件内容
- * @param {*} path 
- * @param {*} compareFn 
+ * @param {*} path
+ * @param {*} compareFn
  */
 function sortJsonFile(path, compareFn) {
   const localeJson = getJsonFile(path)
@@ -110,8 +110,8 @@ function sortJsonFile(path, compareFn) {
 
 /**
  * 获取 json 文件内容
- * @param {*} path 
- * @returns 
+ * @param {*} path
+ * @returns
  */
 function getJsonFile(path) {
   try {
@@ -124,6 +124,15 @@ function getJsonFile(path) {
   }
 }
 
+/**
+ * 读取文件内容为字符串
+ * @param {*} path
+ * @returns
+ */
+function readFileWithString(path) {
+  return readFileSync(path).toString()
+}
+
 module.exports = {
   fillFileName,
   isDir,
@@ -131,5 +140,8 @@ module.exports = {
   isFile,
   isFileAsync,
   mkdirsSync,
-  delDir, sortJsonFile, getJsonFile
+  delDir,
+  sortJsonFile,
+  getJsonFile,
+  readFileWithString
 }
