@@ -10,6 +10,9 @@ async function genComponent(path, name) {
   const targetComponentPath = prePath(join(componentRoot, path))
 
   const parentComponentIndex = join(targetComponentPath, 'index.ts')
+  if (!existsSync(parentComponentIndex)) {
+    writeFileSync(parentComponentIndex, '')
+  }
   const parentComponentIndexContent = readFileWithString(parentComponentIndex)
   const newComponentImport = `\nexport { default as ${name} } from './${name}'`
   const targetComponentIndexPath = prePath(join(targetComponentPath, name))

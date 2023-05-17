@@ -130,7 +130,7 @@ function getJsonFile(path) {
  * @returns
  */
 function readFileWithString(path) {
-  return readFileSync(path).toString()
+  return readFileSync(path, 'utf-8').toString()
 }
 
 module.exports = {
