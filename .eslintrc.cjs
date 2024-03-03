@@ -16,7 +16,7 @@ module.exports = {
     },
     // src root
     {
-      ...require('./config/eslint/eslintrc.base.json'),
+      ...require('./config/eslint/eslintrc.nextjs.base'),
       files: ['./src/*.js', './src/*.ts']
     }
   ],
@@ -26,4 +26,4 @@ module.exports = {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname
   }
-}
+};

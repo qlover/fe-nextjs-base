@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 为了重置 10px */
+@layer base {
+  html {
+    font-size: 10px;
+  }
+
+  body {
+    @apply bg-primary font-Poppins text-base text-text-primary;
+  }
+}
+
+/* 为了兼容 less 用法, 见 /styles/less/tailwind/components.scss */
+/* @layer components {} */

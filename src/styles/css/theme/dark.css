@@ -1,0 +1,11 @@
+/* 黑暗模式样式变量, 该属性名对应 next-themes */
+[data-theme="dark"] {
+  --primary: #000000;
+  --secondary: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #6d7783;
+  --text-secondary2: #707070;
+  --hover: rgba(255, 255, 255, 0.075);
+  --hover2: rgba(255, 255, 255, 0.15);
+  --hover3: rgba(255, 255, 255, 0.25);
+}

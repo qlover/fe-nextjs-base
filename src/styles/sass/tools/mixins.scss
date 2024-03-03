@@ -1,0 +1,64 @@
+@mixin color-change-transition {
+  @apply transition-colors duration-200;
+}
+
+@layer {
+  .section-padding-area {
+    @apply mx-auto max-w-screen-maxxl px-2 py-2 md:px-4 md:py-5 lg:px-10 lg:py-10;
+  }
+
+  .max-content {
+    max-width: 1100px;
+  }
+
+  .max-w-1100 {
+    max-width: 1100px;
+  }
+
+  .lg-flex-row {
+    @apply lg:flex lg:flex-row;
+  }
+}
+
+@layer {
+  .m-text-14 {
+    @apply text-12 md:text-14;
+  }
+  .m-text-16 {
+    @apply text-14 md:text-16;
+  }
+  // .m-text-18 {
+  //   @apply 'text-[15px]' md:text-18;
+  // }
+  .m-text-20 {
+    @apply text-16 md:text-20;
+  }
+  // .m-text-30 {
+  //   @apply text-14 ~"md:text-[30px]";
+  // }
+  .m-text-24 {
+    @apply text-18 md:text-24;
+  }
+  .m-text-40 {
+    @apply text-26 md:text-40;
+  }
+  .m-text-h1 {
+    @apply text-32 leading-10 md:text-60;
+  }
+  .m-text-h3 {
+    @apply text-20 leading-6 md:text-40;
+  }
+
+  @media (min-width: theme("screens.md")) {
+    .m-text-h1 {
+      line-height: 80px;
+    }
+    .m-text-h3 {
+      line-height: 60px;
+    }
+  }
+
+  .max-content {
+    max-width: 1120px;
+  }
+}

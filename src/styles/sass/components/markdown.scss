@@ -1,0 +1,85 @@
+.makerdown-section {
+  @apply px-2 pb-8 text-base text-[#111827];
+  :global .markdown-content {
+    padding-top: 0;
+    // padding-bottom: 6rem;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+  }
+  ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+  }
+  a {
+    @apply text-secondary hover:underline;
+  }
+  img {
+    @apply mx-auto my-10;
+  }
+  h1 {
+    font-size: 2.8rem;
+    line-height: 4rem;
+    @apply mb-4 text-center font-semibold text-[#394053];
+  }
+  h2 {
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+    @apply my-6 text-left font-semibold;
+  }
+  h3 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    @apply my-4 text-left font-semibold;
+  }
+  h4 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    @apply my-2 text-left font-semibold;
+  }
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: theme("screens.md")) {
+    @apply px-0 text-base text-[#111827];
+
+    :global .markdown-content {
+      padding-top: 0;
+      padding-bottom: 6rem;
+    }
+
+    p {
+      line-height: 3rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    ul {
+      line-height: 4rem;
+      @apply py-4;
+    }
+    h1 {
+      font-size: 4.8rem;
+      line-height: 5.4rem;
+      @apply text-center font-semibold text-[#394053];
+    }
+    h2 {
+      font-size: 3.2rem;
+      line-height: 3.6rem;
+      margin-top: 6rem;
+      margin-bottom: 3rem;
+    }
+    h3 {
+      font-size: 2.8rem;
+      line-height: 2.4rem;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+    }
+    h4 {
+      font-size: 2.4rem;
+      line-height: 2rem;
+    }
+  }
+}
