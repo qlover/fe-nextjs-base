@@ -17,7 +17,7 @@ module.exports = {
     // src root
     {
       ...require('./config/eslint/nextjs.base.json'),
-      files: ['./src/*.js', './src/*.ts']
+      files: ['./src/*.js', './src/*.ts', './src/*.tsx']
     }
   ],
   parserOptions: {

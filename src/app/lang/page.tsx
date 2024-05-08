@@ -1,4 +1,9 @@
-import Image from "next/image";
+'use client';
+import { logger } from '@/utils/pulgins';
+import { allDocs } from 'contentlayer/generated';
+import Image from 'next/image';
+import { Serialize } from 'packages/utils/Serialize';
+import { useEffect } from 'react';
 
 export async function generateMetadata() {
   return {
@@ -22,7 +27,7 @@ export default async function LangPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
+            By{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -54,7 +59,7 @@ export default async function LangPage() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
+            Docs{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -71,7 +76,7 @@ export default async function LangPage() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
+            Learn{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -88,7 +93,7 @@ export default async function LangPage() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
+            Templates{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -105,7 +110,7 @@ export default async function LangPage() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
+            Deploy{' '}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>

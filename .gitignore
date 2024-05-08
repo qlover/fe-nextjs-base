@@ -43,3 +43,5 @@ public/robots.txt
 public/sitemap*.xml
 dist
 .eslintcache
+.contentlayer
+resources/

@@ -8,7 +8,8 @@
     "src"
   ],
   "scripts": {
-    "dev": "next dev -p 3100",
+    "dev": "npm run rebuild:content && next dev -p 3100",
+    "rebuild:content": "rimraf .contentlayer && contentlayer build",
     "build": "next build",
     "start": "next start",
     "clean": "npm run clean:build && npm run clean:modules",
