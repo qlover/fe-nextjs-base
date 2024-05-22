@@ -5,7 +5,7 @@
     "node": true
   },
   "extends": [
-    "next/core-web-vitals",
+    "standard",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],

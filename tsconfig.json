@@ -38,9 +38,6 @@
       "config/*": [
         "./config/*"
       ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
     }
   },
   // 保证 ts-node 执行正确
@@ -58,6 +55,6 @@
     ".contentlayer/generated"
   ],
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

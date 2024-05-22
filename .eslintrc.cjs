@@ -1,25 +1,39 @@
+// const OFF = 0;
+// const WARNING = 1;
+const ERROR = 2;
+
 module.exports = {
+  env: { node: true, jest: true },
   overrides: [
     {
-      env: {
-        node: true
-      },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
         sourceType: 'script'
       }
     },
-    // work root
-    {
-      ...require('./packages/_work/eslintrc.json'),
-      files: ['./packages/_work/*.js']
-    },
-    // src root
     {
       ...require('./config/eslint/nextjs.base.json'),
-      files: ['./src/*.js', './src/*.ts']
+      files: [
+        'packages/**/*.js',
+        'packages/**/*.ts',
+        './scripts/*.js',
+        'src/**/*.js',
+        'src/**/*.jsx',
+        'src/**/*.ts',
+        'src/**/*.tsx'
+      ]
+    },
+    {
+      files: ['**/*.test.js', '**/*.spec.js'],
+      rules: {
+        // https://github.com/jest-community/eslint-plugin-jest
+        'jest/no-focused-tests': ERROR,
+        'jest/valid-expect': ERROR,
+        'jest/valid-expect-in-promise': ERROR
+      }
     }
   ],
+  plugins: ['jest'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
