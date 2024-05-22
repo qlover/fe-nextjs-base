@@ -8,7 +8,15 @@ type LevelType = keyof Pick<
   'warn' | 'info' | 'debug' | 'error' | 'log'
 >;
 
-export function Logger(args?: { level: number }) {
+export function Logger(args?: { level: number }): {
+  (...args: any[]): void;
+  prefix(level: LevelType): string;
+  debug(...args: any[]): void;
+  info(...args: any[]): void;
+  warn(...args: any[]): void;
+  error(...args: any[]): void;
+  toString(...args: any[]): void;
+} {
   const { level = 1 } = args || {};
 
   const print = (method: LevelType, ...args: any[]) => {
@@ -26,11 +34,11 @@ export function Logger(args?: { level: number }) {
     cmethod && cmethod.apply(console, [prefixstr, ...args]);
   };
 
-  function LoggerWrapper(...args: any[]) {
+  function LoggerWrapper(...args: any[]): void {
     LoggerWrapper.info(...args);
   }
 
-  LoggerWrapper.prefix = (level: LevelType) => {
+  LoggerWrapper.prefix = (level: LevelType): string => {
     const now = new Date();
     const timeZoneOffsetMs = now.getTimezoneOffset() * ONE_MINUTE_MS;
     const localTime = new Date(now.getTime() - timeZoneOffsetMs);
@@ -38,23 +46,23 @@ export function Logger(args?: { level: number }) {
     return `[${time} ${level}]`;
   };
 
-  LoggerWrapper.debug = (...args: any[]) => {
+  LoggerWrapper.debug = (...args: any[]): void => {
     print('debug', ...args);
   };
 
-  LoggerWrapper.info = (...args: any[]) => {
+  LoggerWrapper.info = (...args: any[]): void => {
     print('info', ...args);
   };
 
-  LoggerWrapper.warn = (...args: any[]) => {
+  LoggerWrapper.warn = (...args: any[]): void => {
     print('warn', ...args);
   };
 
-  LoggerWrapper.error = (...args: any[]) => {
+  LoggerWrapper.error = (...args: any[]): void => {
     print('error', ...args);
   };
 
-  LoggerWrapper.toString = (...args: any[]) => {
+  LoggerWrapper.toString = (...args: any[]): void => {
     args.map((value) => {
       LoggerWrapper.info(Serialize.serialize(value));
     });
